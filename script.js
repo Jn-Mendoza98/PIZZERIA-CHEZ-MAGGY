@@ -280,6 +280,31 @@ const cartApp = {
         modal.classList.toggle('hidden', !this.state.isOpen);
     },
 
+    removeItem(id) {
+        const itemIndex = this.state.items.findIndex(item => item.id === id);
+        if (itemIndex > -1) {
+            // Remove completely
+            this.state.items.splice(itemIndex, 1);
+            this.saveCart();
+            this.updateBadge();
+            this.renderCart();
+        }
+    },
+
+    updateItemQty(id, change) {
+        const item = this.state.items.find(i => i.id === id);
+        if (item) {
+            item.qty += change;
+            if (item.qty <= 0) {
+                this.removeItem(id);
+            } else {
+                this.saveCart();
+                this.updateBadge();
+                this.renderCart();
+            }
+        }
+    },
+
     addItem(name, price, imageSrc, desc = '') {
         // Check if item exists (match by both name and exact description)
         const existing = this.state.items.find(i => i.name === name && i.desc === desc);
@@ -343,15 +368,24 @@ const cartApp = {
             const descHtml = item.desc ? `<div class="text-[10px] sm:text-xs text-gray-500 mt-0.5 line-clamp-2 leading-tight">${item.desc}</div>` : '';
             html += `
                 <div class="bg-[#f8f9fa] rounded-xl p-3 flex items-center gap-4 border border-gray-100">
-                    <div class="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
-                        <img src="${item.imageSrc}" alt="${item.name}" class="w-full h-full object-cover">
-                    </div>
                     <div class="flex-grow min-w-0">
                         <h4 class="font-bold text-gray-800 text-sm truncate">${item.name}</h4>
                         ${descHtml}
-                        <div class="text-xs text-gray-400 mt-0.5 truncate">S/ ${item.price.toFixed(2)} x ${item.qty}</div>
+                        <div class="text-xs text-primary mt-1 flex items-center gap-2">
+                            <button onclick="cartApp.updateItemQty('${item.id}', -1)" class="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300 transition">
+                                <i class="fas fa-minus text-[8px]"></i>
+                            </button>
+                            <span class="text-gray-700 font-medium">${item.qty}</span>
+                            <button onclick="cartApp.updateItemQty('${item.id}', 1)" class="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300 transition">
+                                <i class="fas fa-plus text-[8px]"></i>
+                            </button>
+                            <span class="text-gray-400 ml-1">S/ ${item.price.toFixed(2)} c/u</span>
+                        </div>
                     </div>
                     <div class="font-bold text-gray-800 whitespace-nowrap">S/ ${itemTotal.toFixed(2)}</div>
+                    <button onclick="cartApp.removeItem('${item.id}')" class="text-red-500 hover:text-red-700 transition ml-2 flex-shrink-0" title="Eliminar del carrito">
+                        <i class="fas fa-trash-alt text-sm"></i>
+                    </button>
                 </div>
             `;
         });
