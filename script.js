@@ -280,6 +280,17 @@ const cartApp = {
         modal.classList.toggle('hidden', !this.state.isOpen);
     },
 
+    removeItem(id) {
+        const itemIndex = this.state.items.findIndex(item => item.id === id);
+        if (itemIndex > -1) {
+            // Remove completely
+            this.state.items.splice(itemIndex, 1);
+            this.saveCart();
+            this.updateBadge();
+            this.renderCart();
+        }
+    },
+
     addItem(name, price, imageSrc, desc = '') {
         // Check if item exists (match by both name and exact description)
         const existing = this.state.items.find(i => i.name === name && i.desc === desc);
@@ -352,6 +363,9 @@ const cartApp = {
                         <div class="text-xs text-gray-400 mt-0.5 truncate">S/ ${item.price.toFixed(2)} x ${item.qty}</div>
                     </div>
                     <div class="font-bold text-gray-800 whitespace-nowrap">S/ ${itemTotal.toFixed(2)}</div>
+                    <button onclick="cartApp.removeItem('${item.id}')" class="text-red-500 hover:text-red-700 transition ml-2 flex-shrink-0" title="Eliminar del carrito">
+                        <i class="fas fa-trash-alt text-sm"></i>
+                    </button>
                 </div>
             `;
         });
