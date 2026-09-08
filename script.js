@@ -368,9 +368,6 @@ const cartApp = {
             const descHtml = item.desc ? `<div class="text-[10px] sm:text-xs text-gray-500 mt-0.5 line-clamp-2 leading-tight">${item.desc}</div>` : '';
             html += `
                 <div class="bg-[#f8f9fa] rounded-xl p-3 flex items-center gap-4 border border-gray-100">
-                    <div class="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
-                        <img src="${item.imageSrc}" alt="${item.name}" class="w-full h-full object-cover">
-                    </div>
                     <div class="flex-grow min-w-0">
                         <h4 class="font-bold text-gray-800 text-sm truncate">${item.name}</h4>
                         ${descHtml}
