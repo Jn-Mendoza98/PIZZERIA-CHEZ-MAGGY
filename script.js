@@ -961,3 +961,117 @@ function addPizzaToCart(pizzaIdx) {
 
     cartApp.addItem(finalName, price, img);
 }
+
+// --- Pizza Search Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('pizza-search-input');
+    const suggestionsContainer = document.getElementById('pizza-search-suggestions');
+    const searchBtn = document.getElementById('pizza-search-btn');
+    const pizzaGrid = document.getElementById('pizza-grid');
+
+    if (!searchInput || !pizzaGrid) return;
+
+    // Build pizza data array
+    const pizzaCards = Array.from(pizzaGrid.children);
+    const pizzas = pizzaCards.map((card, index) => {
+        const titleEl = card.querySelector('h4');
+        return {
+            title: titleEl ? titleEl.textContent.trim() : '',
+            element: card,
+            index: index
+        };
+    });
+
+    const renderSuggestions = (query) => {
+        if (!query) {
+            suggestionsContainer.classList.add('hidden');
+            suggestionsContainer.innerHTML = '';
+            // Show all cards
+            pizzaCards.forEach(card => {
+                card.style.display = '';
+                card.classList.remove('hidden');
+            });
+            return;
+        }
+
+        const lowerQuery = query.toLowerCase();
+        const matches = pizzas.filter(p => p.title.toLowerCase().includes(lowerQuery));
+
+        // Live filter cards
+        pizzaCards.forEach(card => {
+            const isMatch = matches.some(m => m.element === card);
+            card.style.display = isMatch ? '' : 'none';
+        });
+
+        // Show suggestions
+        if (matches.length > 0) {
+            suggestionsContainer.innerHTML = matches.map(match => `
+                <button class="w-full text-left px-4 py-3 hover:bg-gray-50 border-b border-gray-50 last:border-0 transition-colors flex items-center justify-between group" data-index="${match.index}">
+                    <span class="font-medium text-gray-700 group-hover:text-primary transition-colors">${match.title}</span>
+                    <i class="fas fa-chevron-right text-gray-300 group-hover:text-primary text-xs transition-colors"></i>
+                </button>
+            `).join('');
+            suggestionsContainer.classList.remove('hidden');
+            suggestionsContainer.classList.add('flex');
+        } else {
+            suggestionsContainer.innerHTML = `
+                <div class="px-4 py-4 text-center text-gray-500 text-sm">
+                    No se encontraron pizzas con "${query}"
+                </div>
+            `;
+            suggestionsContainer.classList.remove('hidden');
+            suggestionsContainer.classList.add('flex');
+        }
+    };
+
+    searchInput.addEventListener('input', (e) => {
+        renderSuggestions(e.target.value.trim());
+    });
+
+    // Close suggestions when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !suggestionsContainer.contains(e.target) && !searchBtn.contains(e.target)) {
+            suggestionsContainer.classList.add('hidden');
+            suggestionsContainer.classList.remove('flex');
+        }
+    });
+
+    // Handle suggestion click
+    suggestionsContainer.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (btn) {
+            const index = btn.getAttribute('data-index');
+            const match = pizzas.find(p => p.index == index);
+            if (match) {
+                searchInput.value = match.title;
+                suggestionsContainer.classList.add('hidden');
+                suggestionsContainer.classList.remove('flex');
+
+                // Show only this card
+                pizzaCards.forEach(card => {
+                    card.style.display = card === match.element ? '' : 'none';
+                });
+
+                // Scroll to it
+                const y = match.element.getBoundingClientRect().top + window.scrollY - 100;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
+    });
+
+    // Handle Search Button Click
+    searchBtn.addEventListener('click', () => {
+        const query = searchInput.value.trim();
+        renderSuggestions(query);
+        suggestionsContainer.classList.add('hidden');
+        suggestionsContainer.classList.remove('flex');
+        if (query) {
+             const lowerQuery = query.toLowerCase();
+             const firstMatch = pizzas.find(p => p.title.toLowerCase().includes(lowerQuery));
+             if (firstMatch) {
+                 const y = firstMatch.element.getBoundingClientRect().top + window.scrollY - 100;
+                 window.scrollTo({ top: y, behavior: 'smooth' });
+             }
+        }
+    });
+});

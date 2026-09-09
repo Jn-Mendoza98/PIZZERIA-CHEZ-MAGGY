@@ -207,7 +207,7 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Search Bar Container -->
     <div class="flex justify-center mb-10 px-4 relative z-10">
-        <div class="relative w-full max-w-lg flex items-center bg-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 p-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-shadow duration-300">
+        <div class="relative bg-white rounded-full shadow-lg p-2 flex items-center mx-auto max-w-2xl border-2 border-transparent focus-within:border-primary/20 transition-all duration-300 z-30">
             <div class="pl-5 pr-3 text-gray-400">
                 <i class="fas fa-search text-lg"></i>
             </div>
@@ -216,11 +216,17 @@
                 id="pizza-search-input"
                 placeholder="Busca tu pizza favorita..."
                 class="w-full py-3 bg-transparent border-none focus:outline-none text-gray-700 font-medium placeholder-gray-400"
+                autocomplete="off"
             >
             <button id="pizza-search-btn" class="bg-gradient-to-r from-primary to-red-700 text-white px-6 py-3 rounded-full hover:shadow-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 font-bold flex items-center gap-2">
                 <span class="hidden sm:inline">Buscar</span>
                 <i class="fas fa-arrow-right sm:hidden"></i>
             </button>
+
+            <!-- Suggestions Dropdown -->
+            <div id="pizza-search-suggestions" class="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hidden flex-col z-50">
+                <!-- Injected via JS -->
+            </div>
         </div>
     </div>
     <div id="pizza-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
