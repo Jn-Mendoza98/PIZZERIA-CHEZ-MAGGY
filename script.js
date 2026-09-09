@@ -365,26 +365,32 @@ const cartApp = {
         this.state.items.forEach(item => {
             const itemTotal = item.price * item.qty;
             total += itemTotal;
-            const descHtml = item.desc ? `<div class="text-[10px] sm:text-xs text-gray-500 mt-0.5 line-clamp-2 leading-tight">${item.desc}</div>` : '';
+            const descHtml = item.desc ? `<div class="text-xs text-gray-500 mt-1 leading-tight">${item.desc}</div>` : '';
+            const imgHtml = item.imageSrc ? `<div class="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-gray-100 bg-gray-50"><img src="${item.imageSrc}" class="w-full h-full object-cover"></div>` : '';
+
             html += `
-                <div class="bg-[#f8f9fa] rounded-xl p-3 flex items-center gap-4 border border-gray-100">
-                    <div class="flex-grow min-w-0">
-                        <h4 class="font-bold text-gray-800 text-sm truncate">${item.name}</h4>
-                        ${descHtml}
-                        <div class="text-xs text-primary mt-1 flex items-center gap-2">
-                            <button onclick="cartApp.updateItemQty('${item.id}', -1)" class="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300 transition">
-                                <i class="fas fa-minus text-[8px]"></i>
-                            </button>
-                            <span class="text-gray-700 font-medium">${item.qty}</span>
-                            <button onclick="cartApp.updateItemQty('${item.id}', 1)" class="w-5 h-5 flex items-center justify-center bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300 transition">
-                                <i class="fas fa-plus text-[8px]"></i>
-                            </button>
-                            <span class="text-gray-400 ml-1">S/ ${item.price.toFixed(2)} c/u</span>
+                <div class="bg-white rounded-2xl p-4 flex gap-4 border border-gray-100 shadow-sm relative">
+                    ${imgHtml}
+                    <div class="flex-grow min-w-0 flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm md:text-base leading-tight pr-6">${item.name}</h4>
+                            ${descHtml}
+                        </div>
+                        <div class="mt-3 flex items-center justify-between">
+                            <div class="flex items-center bg-gray-50 border border-gray-200 rounded-full px-1 py-1">
+                                <button onclick="cartApp.updateItemQty('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center text-gray-700 hover:text-primary transition font-bold">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="text-gray-800 font-bold px-3 text-sm">${item.qty}</span>
+                                <button onclick="cartApp.updateItemQty('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center text-gray-700 hover:text-primary transition font-bold">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                            <div class="font-bold text-gray-800 text-base">S/ ${itemTotal.toFixed(2)}</div>
                         </div>
                     </div>
-                    <div class="font-bold text-gray-800 whitespace-nowrap">S/ ${itemTotal.toFixed(2)}</div>
-                    <button onclick="cartApp.removeItem('${item.id}')" class="text-red-500 hover:text-red-700 transition ml-2 flex-shrink-0" title="Eliminar del carrito">
-                        <i class="fas fa-trash-alt text-sm"></i>
+                    <button onclick="cartApp.removeItem('${item.id}')" class="absolute top-4 right-4 text-red-500 hover:text-red-700 transition" title="Eliminar del carrito">
+                        <i class="fas fa-trash-alt text-base"></i>
                     </button>
                 </div>
             `;

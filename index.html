@@ -606,40 +606,47 @@
 
     <!-- Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4 hidden text-left">
-        <div class="bg-white w-full max-w-md rounded-xl shadow-2xl overflow-hidden flex flex-col">
+            <div class="bg-gray-50 w-full max-w-md rounded-2xl shadow-2xl overflow-hidden flex flex-col">
             <!-- Modal Header -->
-            <div class="bg-[#111] text-white p-4 flex items-center justify-between">
+                <div class="bg-black text-white p-5 flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <i class="fas fa-receipt text-primary text-xl"></i>
-                    <h2 class="font-bold text-lg tracking-wide">RESUMEN DE PEDIDO</h2>
+                        <i class="fas fa-receipt text-red-600 text-xl"></i>
+                        <h2 class="font-bold text-lg tracking-wider">RESUMEN DE PEDIDO</h2>
                 </div>
-                <button onclick="cartApp.toggleModal()" class="text-white hover:text-primary transition">
+                    <button onclick="cartApp.toggleModal()" class="text-gray-400 hover:text-white transition">
                     <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
 
             <!-- Modal Body / Items List -->
-            <div id="cart-items-container" class="p-4 flex-grow overflow-y-auto max-h-[60vh] space-y-3 bg-[#fdfdfd]">
+                <div id="cart-items-container" class="p-4 flex-grow overflow-y-auto max-h-[60vh] space-y-4">
                 <!-- Items injected by JS -->
             </div>
 
             <!-- Empty State (Hidden by default) -->
-            <div id="cart-empty-state" class="p-8 text-center text-gray-500 hidden">
+                <div id="cart-empty-state" class="p-8 text-center text-gray-500 hidden bg-white">
                 <i class="fas fa-shopping-basket text-4xl mb-3 text-gray-300"></i>
                 <p>Tu carrito está vacío.</p>
             </div>
 
-            <!-- Total Area -->
-            <div class="p-4 border-t border-gray-100 bg-white">
-                <div class="flex items-center justify-between font-bold text-gray-800 text-lg mb-6 pt-2">
-                    <span class="text-[#3a4454] uppercase tracking-wide">TOTAL GENERAL</span>
-                    <span id="cart-total-price" class="text-primary text-2xl">S/ 0.00</span>
+                <!-- Hidden Subtotals (Required by JS) -->
+                <div class="hidden">
+                    <span id="deliveryFee"></span>
+                    <span id="discount"></span>
+                    <span id="subtotal"></span>
                 </div>
-                <div class="flex justify-end gap-3 border-t border-gray-100 pt-4">
-                    <button onclick="cartApp.toggleModal()" class="px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 font-bold hover:bg-gray-50 transition bg-white shadow-sm text-sm">
+
+            <!-- Total Area -->
+                <div class="p-5 border-t border-gray-200 bg-white">
+                    <div class="flex items-center justify-between font-bold text-gray-800 text-lg mb-6">
+                        <span class="text-gray-900 font-extrabold uppercase tracking-wide">TOTAL GENERAL</span>
+                        <span id="cart-total-price" class="text-red-600 font-extrabold text-2xl">S/ 0.00</span>
+                </div>
+                    <div class="flex gap-3">
+                        <button onclick="cartApp.toggleModal()" class="flex-1 py-3.5 rounded-xl border-2 border-gray-200 text-gray-700 font-bold hover:bg-gray-50 transition bg-white shadow-sm text-sm tracking-wide">
                         Cerrar
                     </button>
-                    <button onclick="cartApp.checkout()" class="px-5 py-2.5 rounded-lg bg-primary text-white font-bold hover:bg-red-700 transition shadow-sm text-sm">
+                        <button onclick="cartApp.checkout()" class="flex-1 py-3.5 rounded-xl bg-red-600 text-white font-bold hover:bg-red-700 transition shadow-sm text-sm tracking-wide">
                         Finalizar Pedido
                     </button>
                 </div>
