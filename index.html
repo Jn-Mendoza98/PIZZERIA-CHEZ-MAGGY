@@ -65,17 +65,26 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="lg:hidden hidden bg-dark border-t border-gray-800">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-primary hover:bg-gray-800 transition">Inicio</a>
-                <a href="menu.html#entradas" data-category="entradas" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 transition">Entradas</a>
-                <a href="menu.html#cremas" data-category="cremas" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 transition">Cremas</a>
-                <a href="menu.html#calzone" data-category="calzone" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 transition">Calzone</a>
-                <a href="menu.html#pizzas" data-category="pizzas" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 transition">Pizzas</a>
-                <a href="menu.html#pastas" data-category="pastas" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 transition">Pastas</a>
-                <a href="menu.html#refrescos" data-category="refrescos" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 transition">Refrescos</a>
-                <a href="menu.html#postres" data-category="postres" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 transition">Postres</a>
-                <a href="menu.html#bebidas" data-category="bebidas" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 transition">Bebidas</a>
+        <div id="mobile-menu" class="fixed inset-0 z-50 bg-[#111] hidden flex-col">
+            <div class="flex items-center justify-between px-4 h-16 sm:h-20 border-b border-gray-800 w-full">
+                <div class="flex items-center gap-2">
+                    <div class="text-2xl font-serif italic text-primary font-bold">Chez Maggy</div>
+                    <i class="fas fa-pizza-slice text-yellow-500 text-xl"></i>
+                </div>
+                <button id="mobile-menu-close-btn" class="text-gray-400 hover:text-primary focus:outline-none p-2" type="button">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center space-y-6 overflow-y-auto py-8">
+                <a href="index.html" class="text-2xl font-bold uppercase tracking-wider text-white hover:text-primary transition">Inicio</a>
+                <a href="menu.html#entradas" data-category="entradas" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Entradas</a>
+                <a href="menu.html#cremas" data-category="cremas" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Cremas</a>
+                <a href="menu.html#calzone" data-category="calzone" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Calzone</a>
+                <a href="menu.html#pizzas" data-category="pizzas" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Pizzas</a>
+                <a href="menu.html#pastas" data-category="pastas" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Pastas</a>
+                <a href="menu.html#refrescos" data-category="refrescos" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Refrescos</a>
+                <a href="menu.html#postres" data-category="postres" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Postres</a>
+                <a href="menu.html#bebidas" data-category="bebidas" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Bebidas</a>
             </div>
         </div>
     </header>
