@@ -995,7 +995,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const lowerQuery = query.toLowerCase();
-        const matches = pizzas.filter(p => p.title.toLowerCase().includes(lowerQuery));
+        const matches = pizzas.filter(p => p.title.toLowerCase().startsWith(lowerQuery));
 
         // Live filter cards
         pizzaCards.forEach(card => {
@@ -1067,7 +1067,7 @@ document.addEventListener('DOMContentLoaded', () => {
         suggestionsContainer.classList.remove('flex');
         if (query) {
              const lowerQuery = query.toLowerCase();
-             const firstMatch = pizzas.find(p => p.title.toLowerCase().includes(lowerQuery));
+             const firstMatch = pizzas.find(p => p.title.toLowerCase().startsWith(lowerQuery));
              if (firstMatch) {
                  const y = firstMatch.element.getBoundingClientRect().top + window.scrollY - 100;
                  window.scrollTo({ top: y, behavior: 'smooth' });
