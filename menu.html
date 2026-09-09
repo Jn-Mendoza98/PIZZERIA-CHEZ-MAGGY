@@ -58,26 +58,26 @@
 </div>
 
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="fixed inset-0 z-50 bg-[#111] hidden flex-col">
+<div id="mobile-menu-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-50 hidden transition-opacity"></div>
+<div id="mobile-menu" class="fixed inset-y-0 left-0 z-50 w-3/4 max-w-sm bg-[#111] hidden flex-col shadow-xl transform transition-transform -translate-x-full">
     <div class="flex items-center justify-between px-4 h-16 sm:h-20 border-b border-gray-800 w-full">
         <div class="flex items-center gap-2">
             <div class="text-2xl font-serif italic text-primary font-bold">Chez Maggy</div>
-            <i class="fas fa-pizza-slice text-yellow-500 text-xl"></i>
         </div>
         <button id="mobile-menu-close-btn" class="text-gray-400 hover:text-primary focus:outline-none p-2" type="button">
             <i class="fas fa-times text-2xl"></i>
         </button>
     </div>
-    <div class="flex-1 flex flex-col items-center justify-center space-y-6 overflow-y-auto py-8">
-        <a href="index.html" class="text-2xl font-bold uppercase tracking-wider text-white hover:text-primary transition">Inicio</a>
-        <a href="#entradas" data-category="entradas" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Entradas</a>
-        <a href="#cremas" data-category="cremas" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Cremas</a>
-        <a href="#calzone" data-category="calzone" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Calzone</a>
-        <a href="#pizzas" data-category="pizzas" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Pizzas</a>
-        <a href="#pastas" data-category="pastas" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Pastas</a>
-        <a href="#refrescos" data-category="refrescos" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Refrescos</a>
-        <a href="#postres" data-category="postres" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Postres</a>
-        <a href="#bebidas" data-category="bebidas" class="text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link">Bebidas</a>
+    <div class="flex-1 flex flex-col items-start justify-start space-y-6 overflow-y-auto py-8 px-8">
+        <a href="index.html" class="flex items-center gap-3 text-xl font-bold uppercase tracking-wider text-white hover:text-primary transition"><i class="fas fa-home w-6 text-center"></i> Inicio</a>
+        <a href="#entradas" data-category="entradas" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🍃</span> Entradas</a>
+        <a href="#cremas" data-category="cremas" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🥣</span> Cremas</a>
+        <a href="#calzone" data-category="calzone" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><i class="fas fa-pizza-slice w-6 text-center"></i> Calzone</a>
+        <a href="#pizzas" data-category="pizzas" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🍕</span> Pizzas</a>
+        <a href="#pastas" data-category="pastas" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🍝</span> Pastas</a>
+        <a href="#refrescos" data-category="refrescos" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🥤</span> Refrescos</a>
+        <a href="#postres" data-category="postres" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🧁</span> Postres</a>
+        <a href="#bebidas" data-category="bebidas" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🥤</span> Bebidas</a>
     </div>
 </div>
 </header><main class="pb-16 bg-light min-h-screen">

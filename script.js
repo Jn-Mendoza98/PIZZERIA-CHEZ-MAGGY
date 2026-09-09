@@ -711,28 +711,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenuCloseBtn = document.getElementById('mobile-menu-close-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
     if (mobileMenuBtn && mobileMenu) {
-        const toggleMenu = () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling
+        const openMenu = () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+            // Slight delay to allow display:flex to apply before animating transform
+            setTimeout(() => {
+                mobileMenu.classList.remove('-translate-x-full');
+            }, 10);
+
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.classList.remove('hidden');
+            }
+            document.body.classList.add('overflow-hidden'); // Prevent scrolling
         };
 
-        mobileMenuBtn.addEventListener('click', toggleMenu);
+        const closeMenu = () => {
+            mobileMenu.classList.add('-translate-x-full');
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.classList.add('hidden');
+            }
+            document.body.classList.remove('overflow-hidden');
+
+            // Wait for animation to finish before hiding completely
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            }, 300); // 300ms matches Tailwind's transition duration
+        };
+
+        mobileMenuBtn.addEventListener('click', openMenu);
 
         if (mobileMenuCloseBtn) {
-            mobileMenuCloseBtn.addEventListener('click', toggleMenu);
+            mobileMenuCloseBtn.addEventListener('click', closeMenu);
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', closeMenu);
         }
 
         // Close menu when a link inside it is clicked
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-                document.body.classList.remove('overflow-hidden');
-            });
+            link.addEventListener('click', closeMenu);
         });
     }
 });
