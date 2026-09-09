@@ -537,15 +537,14 @@
             </div>
         </div>
 
-        <!-- Pizza Tocino con o sin Cebolla 6 -->
+        <!-- Pizza Tocino 6 -->
         <div class="bg-white rounded-[24px] shadow-[0_4px_24px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-col hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-500 group relative">
             <div class="h-48 overflow-hidden relative rounded-t-[24px] bg-gray-100">
-                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Tocino con o sin Cebolla" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Tocino" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
             <div class="p-6 flex flex-col flex-grow bg-white relative z-10 -mt-2 rounded-t-[24px]">
-                <h4 class="font-bold text-gray-800 text-xl mb-1">Tocino con o sin Cebolla</h4>
-                <!--<p class="text-gray-500 text-xs mb-5 line-clamp-2 leading-relaxed">Pepperoni, salchicha, pimientos, cebolla, champiñones y aceitunas.</p>-->
+                <h4 class="font-bold text-gray-800 text-xl mb-1">Tocino</h4>
 
                 <div class="mt-auto">
                     <div class="mb-4 olive-selector-container" data-pizza-id="6">
@@ -564,16 +563,16 @@
                     <p class="text-[10px] text-gray-400 mb-3 font-semibold uppercase tracking-widest">Tamaño ideal para ti</p>
                     <div class="flex gap-2 mb-2">
 
-                        <button onclick="selectPizzaSize(this, '6')" data-name="Tocino con o sin Cebolla (Personal)" data-price="24.00" data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" class="size-btn flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-300 relative border-2 border-transparent w-full bg-gray-50 text-gray-500 hover:bg-gray-100" data-pizza-id="6">
+                        <button onclick="selectPizzaSize(this, '6')" data-name="Tocino (Personal)" data-price="24.00" data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" class="size-btn flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-300 relative border-2 border-transparent w-full bg-gray-50 text-gray-500 hover:bg-gray-100" data-pizza-id="6">
 
                             <span class="text-[10px] sm:text-[11px] font-bold tracking-wider z-10">PERSONAL</span>
                             <span class="text-xs font-extrabold mt-0.5  z-10 price-label">S/24.00</span>
                         </button>
-                        <button onclick="selectPizzaSize(this, '6')" data-name="Tocino con o sin Cebolla (Mediana)" data-price="40.00" data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" class="size-btn flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-300 relative border-2 border-transparent w-full bg-gray-50 text-gray-500 hover:bg-gray-100" data-pizza-id="6">
+                        <button onclick="selectPizzaSize(this, '6')" data-name="Tocino (Mediana)" data-price="40.00" data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" class="size-btn flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-300 relative border-2 border-transparent w-full bg-gray-50 text-gray-500 hover:bg-gray-100" data-pizza-id="6">
                             <span class="text-[10px] sm:text-[11px] font-bold tracking-wider z-10">MEDIANA</span>
                             <span class="text-xs font-extrabold mt-0.5  z-10 price-label">S/40.00</span>
                         </button>
-                        <button onclick="selectPizzaSize(this, '6')" data-name="Tocino con o sin Cebolla (Familiar)" data-price="53.00" data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" class="size-btn flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-300 relative border-2 border-transparent w-full bg-gray-50 text-gray-500 hover:bg-gray-100" data-pizza-id="6">
+                        <button onclick="selectPizzaSize(this, '6')" data-name="Tocino (Familiar)" data-price="53.00" data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" class="size-btn flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-300 relative border-2 border-transparent w-full bg-gray-50 text-gray-500 hover:bg-gray-100" data-pizza-id="6">
 
                             <span class="text-[10px] sm:text-[11px] font-bold tracking-wider z-10">FAMILIAR</span>
                             <span class="text-xs font-extrabold mt-0.5  z-10 price-label">S/53.00</span>
@@ -581,6 +580,61 @@
                     </div>
 
                     <button id="add-btn-6" onclick="alert('Seleccione un tamaño antes de agregar al carrito')" class="w-full mt-5 bg-gradient-to-r from-primary to-red-700 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center hover:shadow-[0_8px_20px_rgba(230,33,23,0.4)] hover:-translate-y-0.5 transition-all duration-300 group">
+                        <div class="flex items-center gap-2">
+                            <div class="bg-white/20 p-1.5 rounded-lg group-hover:scale-110 transition-transform">
+                                <i class="fas fa-shopping-cart text-sm"></i>
+                            </div>
+                            <span class="text-sm tracking-wide">Agregar al carrito</span>
+                        </div>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pizza Tocino con Cebolla 60 -->
+        <div class="bg-white rounded-[24px] shadow-[0_4px_24px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-col hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-500 group relative">
+            <div class="h-48 overflow-hidden relative rounded-t-[24px] bg-gray-100">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Tocino con Cebolla" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow bg-white relative z-10 -mt-2 rounded-t-[24px]">
+                <h4 class="font-bold text-gray-800 text-xl mb-1">Tocino con Cebolla</h4>
+
+                <div class="mt-auto">
+                    <div class="mb-4 olive-selector-container" data-pizza-id="60">
+                        <div class="flex items-center justify-between mb-2">
+                            <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-widest">Elige tu tipo de aceituna</p>
+                            <span class="bg-red-100 text-red-600 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">Obligatorio</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="selectOliveType(this, '60', 'Negra')" class="flex-1 py-1.5 px-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-600 text-xs font-bold hover:bg-red-50 hover:border-red-200 transition-colors olive-chip" data-type="Negra">Negra</button>
+                            <button onclick="selectOliveType(this, '60', 'Verde')" class="flex-1 py-1.5 px-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-600 text-xs font-bold hover:bg-red-50 hover:border-red-200 transition-colors olive-chip" data-type="Verde">Verde</button>
+                            <button onclick="selectOliveType(this, '60', 'Mixta')" class="flex-1 py-1.5 px-2 rounded-xl border border-gray-200 bg-gray-50 text-gray-600 text-xs font-bold hover:bg-red-50 hover:border-red-200 transition-colors olive-chip" data-type="Mixta">Mixta</button>
+                        </div>
+                        <p id="olive-error-60" class="text-red-500 text-[10px] font-bold mt-1 hidden">Debes elegir el tipo de aceituna para continuar</p>
+                    </div>
+
+                    <p class="text-[10px] text-gray-400 mb-3 font-semibold uppercase tracking-widest">Tamaño ideal para ti</p>
+                    <div class="flex gap-2 mb-2">
+
+                        <button onclick="selectPizzaSize(this, '60')" data-name="Tocino con Cebolla (Personal)" data-price="24.00" data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" class="size-btn flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-300 relative border-2 border-transparent w-full bg-gray-50 text-gray-500 hover:bg-gray-100" data-pizza-id="60">
+
+                            <span class="text-[10px] sm:text-[11px] font-bold tracking-wider z-10">PERSONAL</span>
+                            <span class="text-xs font-extrabold mt-0.5  z-10 price-label">S/24.00</span>
+                        </button>
+                        <button onclick="selectPizzaSize(this, '60')" data-name="Tocino con Cebolla (Mediana)" data-price="40.00" data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" class="size-btn flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-300 relative border-2 border-transparent w-full bg-gray-50 text-gray-500 hover:bg-gray-100" data-pizza-id="60">
+                            <span class="text-[10px] sm:text-[11px] font-bold tracking-wider z-10">MEDIANA</span>
+                            <span class="text-xs font-extrabold mt-0.5  z-10 price-label">S/40.00</span>
+                        </button>
+                        <button onclick="selectPizzaSize(this, '60')" data-name="Tocino con Cebolla (Familiar)" data-price="53.00" data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" class="size-btn flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-300 relative border-2 border-transparent w-full bg-gray-50 text-gray-500 hover:bg-gray-100" data-pizza-id="60">
+
+                            <span class="text-[10px] sm:text-[11px] font-bold tracking-wider z-10">FAMILIAR</span>
+                            <span class="text-xs font-extrabold mt-0.5  z-10 price-label">S/53.00</span>
+                        </button>
+                    </div>
+
+                    <button id="add-btn-60" onclick="alert('Seleccione un tamaño antes de agregar al carrito')" class="w-full mt-5 bg-gradient-to-r from-primary to-red-700 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center hover:shadow-[0_8px_20px_rgba(230,33,23,0.4)] hover:-translate-y-0.5 transition-all duration-300 group">
                         <div class="flex items-center gap-2">
                             <div class="bg-white/20 p-1.5 rounded-lg group-hover:scale-110 transition-transform">
                                 <i class="fas fa-shopping-cart text-sm"></i>
