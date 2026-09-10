@@ -838,3 +838,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Function specifically for adding Calzone Vegetariano with olive validation
+function addCalzoneVegToCart() {
+    const container = document.querySelector('.olive-selector-container[data-pizza-id="calzone-veg"]');
+    if (!container) return;
+
+    const selectedOlive = container.querySelector('.olive-chip.selected');
+    const errorMsg = document.getElementById('olive-error-calzone-veg');
+
+    if (!selectedOlive) {
+        if (errorMsg) errorMsg.classList.remove('hidden');
+        return;
+    }
+
+    if (errorMsg) errorMsg.classList.add('hidden');
+
+    const oliveType = selectedOlive.getAttribute('data-type');
+    const name = `Calzone Vegetariano (Aceitunas ${oliveType})`;
+    const price = 26.90;
+    const img = 'IM/CAL.jpg';
+
+    cartApp.addItem(name, price, img);
+}
