@@ -438,8 +438,9 @@ const cartApp = {
 function bindGridAddButtons() {
     const gridItems = document.querySelectorAll('.grid > div');
     gridItems.forEach(item => {
-        const addBtn = item.querySelector('button');
-        if (addBtn && !addBtn.hasAttribute('onclick')) {
+        // Find all buttons in the grid item that don't have an onclick handler
+        const btns = item.querySelectorAll('button:not([onclick])');
+        btns.forEach(addBtn => {
             addBtn.addEventListener('click', () => {
                 const name = item.querySelector('h4').innerText;
                 const priceStr = item.querySelector('.text-primary.font-bold').innerText;
@@ -448,7 +449,7 @@ function bindGridAddButtons() {
 
                 cartApp.addItem(name, price, img);
             });
-        }
+        });
     });
 }
 
@@ -859,5 +860,11 @@ function addCalzoneVegToCart() {
     const price = 26.90;
     const img = 'IM/CAL.jpg';
 
+    cartApp.addItem(name, price, img);
+}
+
+// Generic function for Calzones without olive selection
+function addCalzoneToCart(name, price) {
+    const img = 'IM/CAL.jpg';
     cartApp.addItem(name, price, img);
 }
