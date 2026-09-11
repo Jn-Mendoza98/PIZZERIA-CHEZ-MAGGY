@@ -927,3 +927,32 @@ function confirmFetuccini() {
     cartApp.addItem(name, price, img, category);
     closeFetucciniModal();
 }
+
+// Espaguetis Modal Logic
+function openEspaguetisModal() {
+    const modal = document.getElementById('espaguetis-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
+}
+
+function closeEspaguetisModal() {
+    const modal = document.getElementById('espaguetis-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+function confirmEspaguetis() {
+    const selectedSauce = document.querySelector('input[name="espaguetis-sauce"]:checked');
+    if (!selectedSauce) return;
+
+    const sauceName = selectedSauce.value;
+    const name = `Espaguetis (Salsa ${sauceName})`;
+    const price = 22.00;
+    const img = 'IM/pasta.png';
+    const category = 'Pasta';
+
+    cartApp.addItem(name, price, img, category);
+    closeEspaguetisModal();
+}
