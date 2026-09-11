@@ -897,3 +897,33 @@ function confirmRavioles() {
     cartApp.addItem(name, price, img, category);
     closeRaviolesModal();
 }
+
+
+// Fetuccini Modal Logic
+function openFetucciniModal() {
+    const modal = document.getElementById('fetuccini-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
+}
+
+function closeFetucciniModal() {
+    const modal = document.getElementById('fetuccini-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+function confirmFetuccini() {
+    const selectedSauce = document.querySelector('input[name="fetuccini-sauce"]:checked');
+    if (!selectedSauce) return;
+
+    const sauceName = selectedSauce.value;
+    const name = `Fetuccini (Salsa ${sauceName})`;
+    const price = 23.00;
+    const img = 'IM/pasta.png';
+    const category = 'Pasta';
+
+    cartApp.addItem(name, price, img, category);
+    closeFetucciniModal();
+}
