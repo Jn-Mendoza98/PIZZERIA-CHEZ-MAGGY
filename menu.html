@@ -2239,15 +2239,16 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
         <!-- Menu Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             <!-- Item 1 -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
-                <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
+
+
+            <div class="flex flex-row lg:flex-col w-full h-full"><div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
                     <img alt="Limonada" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/LIMONADA.png" onerror="this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&amp;fit=crop&amp;w=400&amp;q=80'">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
                     <div class="absolute top-2 left-2 lg:top-3 lg:left-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-md shadow-sm border border-gray-100 flex items-center gap-1.5 z-10">
                         <!-- <span class="text-[10px] sm:text-xs font-bold text-gray-800 tracking-wide uppercase">⭐ Más pedida</span> -->
                     </div>
-                </div>
-                <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
+                </div><div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
                     <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-1" title="Limonada">Limonada</h4>
                     <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Nuestra limonada clásica, el balance perfecto de acidez y dulzor.</p>
 
@@ -2265,25 +2266,23 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                     <div class="mt-auto pt-3 border-t border-gray-100/80 w-full flex flex-col items-center text-center">
                         <span id="price-refresco-0" class="text-primary font-bold text-base lg:text-lg mb-3">S/ 18.00</span>
 
-                    <div class="w-full pt-2">
-        <button onclick="addRefresco('Limonada', 0, 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&amp;fit=crop&amp;w=400&amp;q=80', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                    </div>
+                </div></div><div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50"><button onclick="addRefresco('Limonada', 0, 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&amp;fit=crop&amp;w=400&amp;q=80', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-        </button>
-        </div></div>
-                </div>
-            </div>
+        </button></div></div>
 
             <!-- Item 2 -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
-                <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
+
+
+            <div class="flex flex-row lg:flex-col w-full h-full"><div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
                     <img alt="Chicha Morada" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/CHICHA_MORADA.png" onerror="this.src='https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&amp;fit=crop&amp;w=400&amp;q=80'">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
                     <div class="absolute top-2 left-2 lg:top-3 lg:left-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-md shadow-sm border border-gray-100 flex items-center gap-1.5 z-10">
                         <span class="text-[10px] sm:text-xs font-bold text-gray-800 tracking-wide uppercase">🌿 Natural</span>
                     </div>
-                </div>
-                <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
+                </div><div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
                     <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-1" title="Chicha Morada">Chicha Morada</h4>
                     <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Auténtica chicha morada casera, hervida con manzana y piña.</p>
 
@@ -2301,22 +2300,20 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                     <div class="mt-auto pt-3 border-t border-gray-100/80 w-full flex flex-col items-center text-center">
                         <span id="price-refresco-1" class="text-primary font-bold text-base lg:text-lg mb-3">S/ 12.00</span>
 
-                    <div class="w-full pt-2">
-        <button onclick="addRefresco('Chicha Morada', 1, 'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&amp;fit=crop&amp;w=400&amp;q=80', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                    </div>
+                </div></div><div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50"><button onclick="addRefresco('Chicha Morada', 1, 'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&amp;fit=crop&amp;w=400&amp;q=80', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-        </button>
-        </div></div>
-                </div>
-            </div>
+        </button></div></div>
 
             <!-- Item 3 -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
-                <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
+
+
+            <div class="flex flex-row lg:flex-col w-full h-full"><div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
                     <img alt="Maracuyá" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/MARACUYÁ.png" onerror="this.src='https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&amp;fit=crop&amp;w=400&amp;q=80'">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
-                </div>
-                <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
+                </div><div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
                     <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-1" title="Maracuyá">Maracuyá</h4>
                     <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Refrescante jugo de maracuyá recién exprimido.</p>
 
@@ -2334,25 +2331,23 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                     <div class="mt-auto pt-3 border-t border-gray-100/80 w-full flex flex-col items-center text-center">
                         <span id="price-refresco-2" class="text-primary font-bold text-base lg:text-lg mb-3">S/ 19.00</span>
 
-                    <div class="w-full pt-2">
-        <button onclick="addRefresco('Maracuyá', 2, 'https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&amp;fit=crop&amp;w=400&amp;q=80', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                    </div>
+                </div></div><div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50"><button onclick="addRefresco('Maracuyá', 2, 'https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&amp;fit=crop&amp;w=400&amp;q=80', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-        </button>
-        </div></div>
-                </div>
-            </div>
+        </button></div></div>
 
             <!-- Item 4 -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
-                <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
+
+
+            <div class="flex flex-row lg:flex-col w-full h-full"><div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
                     <img alt="Naranja" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/NARANJA.png" onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&amp;fit=crop&amp;w=400&amp;q=80'">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
                     <div class="absolute top-2 left-2 lg:top-3 lg:left-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-md shadow-sm border border-gray-100 flex items-center gap-1.5 z-10">
                         <span class="text-[10px] sm:text-xs font-bold text-gray-800 tracking-wide uppercase">🌿 Natural</span>
                     </div>
-                </div>
-                <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
+                </div><div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
                     <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-1" title="Naranja">Naranja</h4>
                     <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Jugo de naranjas frescas cuidadosamente seleccionadas.</p>
 
@@ -2370,14 +2365,11 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                     <div class="mt-auto pt-3 border-t border-gray-100/80 w-full flex flex-col items-center text-center">
                         <span id="price-refresco-3" class="text-primary font-bold text-base lg:text-lg mb-3">S/ 17.00</span>
 
-                    <div class="w-full pt-2">
-        <button onclick="addRefresco('Naranja', 3, 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&amp;fit=crop&amp;w=400&amp;q=80', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                    </div>
+                </div></div><div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50"><button onclick="addRefresco('Naranja', 3, 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&amp;fit=crop&amp;w=400&amp;q=80', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-        </button>
-        </div></div>
-                </div>
-            </div>
+        </button></div></div>
 
             <!-- Item 5: Limonada Frozen -->
             <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative opacity-90 grayscale-[20%]">
@@ -2438,157 +2430,143 @@ function addRefresco(name, id, img, btn) {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
 
             <!-- Item 1: Panqueque de Banana con Miel -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
-                <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
+
+
+            <div class="flex flex-row lg:flex-col w-full h-full"><div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
                     <img alt="Panqueque de Banana con Miel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1528207776546-382a933cb738?auto=format&amp;fit=crop&amp;w=400&amp;q=80">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
-                </div>
-                <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
+                </div><div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
                     <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Panqueque de Banana con Miel">Panqueque de Banana con Miel</h4>
                     <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Delicioso panqueque servido con rodajas de banana fresca y un toque de miel.</p>
                     <div class="mt-auto flex flex-col">
                         <span class="font-bold text-primary text-base lg:text-lg mb-3">S/ 12.00</span>
 
-                    <div class="w-full border-t border-gray-50 pt-2">
-        <button onclick="cartApp.addItem('Panqueque de Banana con Miel', 12.00, 'https://images.unsplash.com/photo-1528207776546-382a933cb738?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                    </div>
+                </div></div><div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50"><button onclick="cartApp.addItem('Panqueque de Banana con Miel', 12.00, 'https://images.unsplash.com/photo-1528207776546-382a933cb738?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-        </button>
-        </div></div>
-                </div>
-            </div>
+        </button></div></div>
 
             <!-- Item 2: Panqueque Ron Maggy -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
-                <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
+
+
+            <div class="flex flex-row lg:flex-col w-full h-full"><div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
                     <img alt="Panqueque Ron Maggy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?auto=format&amp;fit=crop&amp;w=400&amp;q=80">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
                     <div class="absolute top-2 left-2 lg:top-3 lg:left-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-md shadow-sm border border-gray-100 flex items-center gap-1.5 z-10">
                         <span class="text-[10px] sm:text-xs font-bold text-gray-800 tracking-wide uppercase">⭐ Recomendado</span>
                     </div>
-                </div>
-                <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
+                </div><div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
                     <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Panqueque Ron Maggy">Panqueque Ron Maggy</h4>
                     <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Nuestra especialidad flambeada con un toque de ron para un sabor inolvidable.</p>
                     <div class="mt-auto flex flex-col">
                         <span class="font-bold text-primary text-base lg:text-lg mb-3">S/ 13.00</span>
 
-                    <div class="w-full border-t border-gray-50 pt-2">
-        <button onclick="cartApp.addItem('Panqueque Ron Maggy', 13.00, 'https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                    </div>
+                </div></div><div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50"><button onclick="cartApp.addItem('Panqueque Ron Maggy', 13.00, 'https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-        </button>
-        </div></div>
-                </div>
-            </div>
+        </button></div></div>
 
             <!-- Item 3: Panqueque con Leche Condensada -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
-                <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
+
+
+            <div class="flex flex-row lg:flex-col w-full h-full"><div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
                     <img alt="Panqueque con Leche Condensada" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1598214886806-c87b84b7078b?auto=format&amp;fit=crop&amp;w=400&amp;q=80">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
-                </div>
-                <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
+                </div><div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
                     <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Panqueque con Leche Condensada">Panqueque con Leche Condensada</h4>
                     <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Suave panqueque bañado en abundante y dulce leche condensada.</p>
                     <div class="mt-auto flex flex-col">
                         <span class="font-bold text-primary text-base lg:text-lg mb-3">S/ 12.00</span>
 
-                    <div class="w-full border-t border-gray-50 pt-2">
-        <button onclick="cartApp.addItem('Panqueque con Leche Condensada', 12.00, 'https://images.unsplash.com/photo-1598214886806-c87b84b7078b?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                    </div>
+                </div></div><div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50"><button onclick="cartApp.addItem('Panqueque con Leche Condensada', 12.00, 'https://images.unsplash.com/photo-1598214886806-c87b84b7078b?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-        </button>
-        </div></div>
-                </div>
-            </div>
+        </button></div></div>
 
             <!-- Item 4: Panqueque con Mermelada -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
-                <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
+
+
+            <div class="flex flex-row lg:flex-col w-full h-full"><div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
                     <img alt="Panqueque con Mermelada" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1620684617595-5db43b2f2d93?auto=format&amp;fit=crop&amp;w=400&amp;q=80">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
-                </div>
-                <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
+                </div><div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
                     <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Panqueque con Mermelada">Panqueque con Mermelada</h4>
                     <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Clásico panqueque relleno de dulce mermelada de frutas.</p>
                     <div class="mt-auto flex flex-col">
                         <span class="font-bold text-primary text-base lg:text-lg mb-3">S/ 12.00</span>
 
-                    <div class="w-full border-t border-gray-50 pt-2">
-        <button onclick="cartApp.addItem('Panqueque con Mermelada', 12.00, 'https://images.unsplash.com/photo-1620684617595-5db43b2f2d93?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                    </div>
+                </div></div><div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50"><button onclick="cartApp.addItem('Panqueque con Mermelada', 12.00, 'https://images.unsplash.com/photo-1620684617595-5db43b2f2d93?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-        </button>
-        </div></div>
-                </div>
-            </div>
+        </button></div></div>
 
             <!-- Item 5: Panqueque de Manjar Blanco -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
-                <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
+
+
+            <div class="flex flex-row lg:flex-col w-full h-full"><div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
                     <img alt="Panqueque de Manjar Blanco" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1598214886806-c87b84b7078b?auto=format&amp;fit=crop&amp;w=400&amp;q=80">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
                     <div class="absolute top-2 left-2 lg:top-3 lg:left-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-md shadow-sm border border-gray-100 flex items-center gap-1.5 z-10">
                         <span class="text-[10px] sm:text-xs font-bold text-gray-800 tracking-wide uppercase">⭐ Más pedido</span>
                     </div>
-                </div>
-                <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
+                </div><div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
                     <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Panqueque de Manjar Blanco">Panqueque de Manjar Blanco</h4>
                     <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">El favorito de todos: relleno con el más dulce manjar blanco artesanal.</p>
                     <div class="mt-auto flex flex-col">
                         <span class="font-bold text-primary text-base lg:text-lg mb-3">S/ 13.00</span>
 
-                    <div class="w-full border-t border-gray-50 pt-2">
-        <button onclick="cartApp.addItem('Panqueque de Manjar Blanco', 13.00, 'https://images.unsplash.com/photo-1598214886806-c87b84b7078b?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                    </div>
+                </div></div><div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50"><button onclick="cartApp.addItem('Panqueque de Manjar Blanco', 13.00, 'https://images.unsplash.com/photo-1598214886806-c87b84b7078b?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-        </button>
-        </div></div>
-                </div>
-            </div>
+        </button></div></div>
 
             <!-- Item 6: Panqueque con Chocolate -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
-                <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
+
+
+            <div class="flex flex-row lg:flex-col w-full h-full"><div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
                     <img alt="Panqueque con Chocolate" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?auto=format&amp;fit=crop&amp;w=400&amp;q=80">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
-                </div>
-                <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
+                </div><div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
                     <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Panqueque con Chocolate">Panqueque con Chocolate</h4>
                     <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Relleno y bañado en deliciosa salsa de chocolate.</p>
                     <div class="mt-auto flex flex-col">
                         <span class="font-bold text-primary text-base lg:text-lg mb-3">S/ 12.00</span>
 
-                    <div class="w-full border-t border-gray-50 pt-2">
-        <button onclick="cartApp.addItem('Panqueque con Chocolate', 12.00, 'https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                    </div>
+                </div></div><div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50"><button onclick="cartApp.addItem('Panqueque con Chocolate', 12.00, 'https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b7?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-        </button>
-        </div></div>
-                </div>
-            </div>
+        </button></div></div>
 
             <!-- Item 7: Durazno en Almíbar -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-row lg:flex-col h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
-                <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
+
+
+            <div class="flex flex-row lg:flex-col w-full h-full"><div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
                     <img alt="Durazno en Almíbar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://images.unsplash.com/photo-1627998687720-3023246eb35a?auto=format&amp;fit=crop&amp;w=400&amp;q=80">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
-                </div>
-                <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
+                </div><div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
                     <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Durazno en Almíbar">Durazno en Almíbar</h4>
                     <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Dulces y jugosas mitades de durazno en su propio almíbar.</p>
                     <div class="mt-auto flex flex-col">
                         <span class="font-bold text-primary text-base lg:text-lg mb-3">S/ 10.00</span>
 
-                    <div class="w-full border-t border-gray-50 pt-2">
-        <button onclick="cartApp.addItem('Durazno en Almíbar', 10.00, 'https://images.unsplash.com/photo-1627998687720-3023246eb35a?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+                    </div>
+                </div></div><div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50"><button onclick="cartApp.addItem('Durazno en Almíbar', 10.00, 'https://images.unsplash.com/photo-1627998687720-3023246eb35a?auto=format&amp;fit=crop&amp;w=400&amp;q=80', '', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-        </button>
-        </div></div>
-                </div>
-            </div>
+        </button></div></div>
 
         </div>
     </div>
