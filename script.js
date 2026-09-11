@@ -3,6 +3,7 @@
 const amigustoApp = {
     state: {
         isOpen: false,
+        type: 'pizza', // 'pizza' or 'calzone'
         limit: 4,
         selected: [],
         currentSizeName: '',
@@ -61,19 +62,42 @@ const amigustoApp = {
         `).join('');
     },
 
-    openModal() {
-        const sizeBtn = document.querySelector(`button[data-pizza-id="4"].selected-size`);
-        if (!sizeBtn) {
-            alert('Seleccione un tamaño primero (Personal, Mediana o Familiar) para la pizza A Mi Gusto.');
+    openModal(type) {
+        if (this.state.type !== type) {
+            this.state.selected = [];
+            this.state.type = type;
+        }
+
+        let name, price, img, limit;
+        let modalTitle = 'Construye tu producto';
+        let modalImg = '';
+
+        if (type === 'pizza') {
+            const sizeBtn = document.querySelector(`button[data-pizza-id="4"].selected-size`);
+            if (!sizeBtn) {
+                alert('Seleccione un tamaño primero (Personal, Mediana o Familiar) para la pizza A Mi Gusto.');
+                return;
+            }
+
+            name = sizeBtn.getAttribute('data-name');
+            price = parseFloat(sizeBtn.getAttribute('data-price'));
+            img = sizeBtn.getAttribute('data-img');
+            const isPersonal = name.includes('Personal');
+            limit = isPersonal ? 4 : 6;
+            modalTitle = 'Construye tu pizza';
+            modalImg = img;
+        } else if (type === 'calzone') {
+            name = 'Calzone A Mi Gusto';
+            price = 31.00;
+            img = 'IM/CAL.jpg';
+            limit = 6;
+            modalTitle = 'Construye tu calzone';
+            modalImg = img;
+        } else {
             return;
         }
 
-        const name = sizeBtn.getAttribute('data-name');
-        const price = parseFloat(sizeBtn.getAttribute('data-price'));
-        const img = sizeBtn.getAttribute('data-img');
-
-        const isPersonal = name.includes('Personal');
-        this.state.limit = isPersonal ? 4 : 6;
+        this.state.limit = limit;
         this.state.currentSizeName = name;
         this.state.currentPrice = price;
         this.state.currentImg = img;
@@ -82,6 +106,11 @@ const amigustoApp = {
         if (this.state.selected.length > this.state.limit) {
             this.state.selected = this.state.selected.slice(0, this.state.limit);
         }
+
+        const titleEl = document.getElementById('amigusto-modal-title');
+        const imgEl = document.getElementById('amigusto-modal-img');
+        if (titleEl) titleEl.innerText = modalTitle;
+        if (imgEl) imgEl.src = modalImg;
 
         this.updateUI();
 
@@ -161,10 +190,30 @@ const amigustoApp = {
         });
     },
 
-    addToCart() {
+    addToCart(directType) {
+        // If triggered directly from "Agregar al carrito" on the card
+        if (directType && directType !== this.state.type) {
+             this.state.selected = [];
+             this.state.type = directType;
+             if (directType === 'pizza') {
+                  const sizeBtn = document.querySelector(`button[data-pizza-id="4"].selected-size`);
+                  if (!sizeBtn) {
+                      alert('Seleccione un tamaño primero (Personal, Mediana o Familiar) para la pizza A Mi Gusto.');
+                      return;
+                  }
+                  this.state.currentSizeName = sizeBtn.getAttribute('data-name');
+                  this.state.currentPrice = parseFloat(sizeBtn.getAttribute('data-price'));
+                  this.state.currentImg = sizeBtn.getAttribute('data-img');
+             } else if (directType === 'calzone') {
+                  this.state.currentSizeName = 'Calzone A Mi Gusto';
+                  this.state.currentPrice = 31.00;
+                  this.state.currentImg = 'IM/CAL.jpg';
+             }
+        }
+
         if (this.state.selected.length === 0) {
             // Require at least one ingredient? Usually up to max. We'll allow empty or prompt.
-            if (!confirm("No has seleccionado ningún ingrediente. ¿Deseas agregar la pizza así?")) {
+            if (!confirm(`No has seleccionado ningún ingrediente. ¿Deseas agregar el ${this.state.type} así?`)) {
                 return;
             }
         }
@@ -184,14 +233,14 @@ const amigustoApp = {
     }
 };
 
-function openAmigustoModal() {
-    amigustoApp.openModal();
+function openAmigustoModal(type) {
+    amigustoApp.openModal(type);
 }
 function closeAmigustoModal() {
     amigustoApp.closeModal();
 }
-function addAmigustoToCart() {
-    amigustoApp.addToCart();
+function addAmigustoToCart(type) {
+    amigustoApp.addToCart(type);
 }
 
 // Tailwind configuration and other custom JS
