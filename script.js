@@ -1,3 +1,199 @@
+
+// --- A Mi Gusto App Logic ---
+const amigustoApp = {
+    state: {
+        isOpen: false,
+        limit: 4,
+        selected: [],
+        currentSizeName: '',
+        currentPrice: 0,
+        currentImg: ''
+    },
+
+    ingredients: [
+        { id: 'am-aceitunas-n', name: 'Aceitunas Negras', img: 'https://images.unsplash.com/photo-1559561853-08451507cbe7?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-aceitunas-v', name: 'Aceitunas Verdes', img: 'https://images.unsplash.com/photo-1603569283847-aa295f0d016a?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-aji', name: 'Ají', img: 'https://images.unsplash.com/photo-1582285194593-fb3dceacbb84?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-albahaca', name: 'Albahaca', img: 'https://images.unsplash.com/photo-1615486171439-d3e75344439c?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-cabanossi', name: 'Cabanossi', img: 'https://images.unsplash.com/photo-1627308595186-e3d81b312781?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-cebolla', name: 'Cebolla', img: 'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-cecina', name: 'Cecina', img: 'https://images.unsplash.com/photo-1606487140880-60bce29b6dc6?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-champinones', name: 'Champiñones', img: 'https://images.unsplash.com/photo-1603417757913-92b0253fce98?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-chorizo', name: 'Chorizo', img: 'https://images.unsplash.com/photo-1542838965-0a149c71fb2a?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-durazno', name: 'Durazno', img: 'https://images.unsplash.com/photo-1528821128474-27f963b062bf?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-esparrago', name: 'Espárrago', img: 'https://images.unsplash.com/photo-1518733355593-3d0d6255776f?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-hotdog', name: 'Hot Dog', img: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-jamon', name: 'Jamón', img: 'https://images.unsplash.com/photo-1628151015968-3a4429e9ef04?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-papaya', name: 'Papaya', img: 'https://images.unsplash.com/photo-1517282009859-f000ef1b4395?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-pepperoni', name: 'Pepperoni', img: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-pimiento', name: 'Pimiento', img: 'https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-pina', name: 'Piña', img: 'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-platano', name: 'Plátano', img: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-pollo', name: 'Pollo', img: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-salame', name: 'Salame', img: 'https://images.unsplash.com/photo-1534065261546-d2efb4be3eb8?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-salchicha', name: 'Salchicha', img: 'https://images.unsplash.com/photo-1585325701165-351af916e581?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-tocino', name: 'Tocino', img: 'https://images.unsplash.com/photo-1528607929212-2636ec44253e?auto=format&fit=crop&w=200&q=80' },
+        { id: 'am-tomate', name: 'Tomate en rodajas', img: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=200&q=80' }
+    ],
+
+    init() {
+        const grid = document.getElementById('amigusto-ingredients-grid');
+        if (!grid) return;
+
+        // In the design, cards have a white background, grey border, rounded corners, image on left/top, text and add button
+        grid.innerHTML = this.ingredients.map(ing => `
+            <div id="amigusto-card-${ing.id}" class="bg-white border-2 border-gray-100 rounded-xl overflow-hidden shadow-sm hover:border-gray-200 transition-colors flex flex-col">
+                <div class="h-24 w-full bg-gray-100 overflow-hidden relative">
+                    <img src="${ing.img}" alt="${ing.name}" class="w-full h-full object-cover">
+                    <!-- Overlay if selected -->
+                    <div id="amigusto-overlay-${ing.id}" class="absolute inset-0 bg-red-600/20 hidden"></div>
+                </div>
+                <div class="p-3 flex flex-col flex-grow items-center text-center">
+                    <span class="text-[11px] font-bold text-gray-800 leading-tight mb-2 flex-grow line-clamp-2">${ing.name}</span>
+                    <button id="amigusto-btn-${ing.id}" onclick="amigustoApp.toggleIngredient('${ing.id}')" class="w-full py-1.5 rounded-lg border border-gray-200 text-[10px] font-bold text-gray-600 hover:bg-gray-50 transition-colors flex items-center justify-center gap-1.5">
+                        <div class="w-3.5 h-3.5 rounded-full border border-gray-300 flex items-center justify-center">
+                            <div class="w-1.5 h-1.5 rounded-full bg-transparent"></div>
+                        </div>
+                        Seleccionar
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    },
+
+    openModal() {
+        const sizeBtn = document.querySelector(`button[data-pizza-id="4"].selected-size`);
+        if (!sizeBtn) {
+            alert('Seleccione un tamaño primero (Personal, Mediana o Familiar) para la pizza A Mi Gusto.');
+            return;
+        }
+
+        const name = sizeBtn.getAttribute('data-name');
+        const price = parseFloat(sizeBtn.getAttribute('data-price'));
+        const img = sizeBtn.getAttribute('data-img');
+
+        const isPersonal = name.includes('Personal');
+        this.state.limit = isPersonal ? 4 : 6;
+        this.state.currentSizeName = name;
+        this.state.currentPrice = price;
+        this.state.currentImg = img;
+
+        // Trim selected if switching size down
+        if (this.state.selected.length > this.state.limit) {
+            this.state.selected = this.state.selected.slice(0, this.state.limit);
+        }
+
+        this.updateUI();
+
+        const modal = document.getElementById('amigusto-modal');
+        if (modal) {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+    },
+
+    closeModal() {
+        const modal = document.getElementById('amigusto-modal');
+        if (modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    },
+
+    toggleIngredient(id) {
+        const idx = this.state.selected.indexOf(id);
+        if (idx > -1) {
+            this.state.selected.splice(idx, 1);
+        } else {
+            if (this.state.selected.length < this.state.limit) {
+                this.state.selected.push(id);
+            } else {
+                alert(`Solo puedes escoger hasta ${this.state.limit} ingredientes en el tamaño seleccionado.`);
+            }
+        }
+        this.updateUI();
+    },
+
+    updateUI() {
+        const maxTexts = document.querySelectorAll('#amigusto-max-text, #amigusto-limit-text');
+        maxTexts.forEach(el => el.innerText = this.state.limit);
+
+        const countText = document.getElementById('amigusto-count-text');
+        if (countText) countText.innerText = this.state.selected.length;
+
+        const priceText = document.getElementById('amigusto-price-text');
+        if (priceText) priceText.innerText = `S/ ${this.state.currentPrice.toFixed(2)}`;
+
+        this.ingredients.forEach(ing => {
+            const card = document.getElementById(`amigusto-card-${ing.id}`);
+            const btn = document.getElementById(`amigusto-btn-${ing.id}`);
+            const overlay = document.getElementById(`amigusto-overlay-${ing.id}`);
+
+            if(!card || !btn || !overlay) return;
+
+            if (this.state.selected.includes(ing.id)) {
+                card.classList.add('border-red-500');
+                card.classList.remove('border-gray-100');
+
+                btn.classList.add('bg-red-50', 'text-red-700', 'border-red-200');
+                btn.classList.remove('text-gray-600', 'border-gray-200', 'hover:bg-gray-50', 'bg-white');
+                btn.innerHTML = `
+                    <div class="w-3.5 h-3.5 rounded-full border-2 border-red-500 flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div>
+                    </div>
+                    Seleccionado
+                `;
+                overlay.classList.remove('hidden');
+            } else {
+                card.classList.remove('border-red-500');
+                card.classList.add('border-gray-100');
+
+                btn.classList.remove('bg-red-50', 'text-red-700', 'border-red-200');
+                btn.classList.add('text-gray-600', 'border-gray-200', 'hover:bg-gray-50', 'bg-white');
+                btn.innerHTML = `
+                    <div class="w-3.5 h-3.5 rounded-full border border-gray-300 flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 rounded-full bg-transparent"></div>
+                    </div>
+                    Seleccionar
+                `;
+                overlay.classList.add('hidden');
+            }
+        });
+    },
+
+    addToCart() {
+        if (this.state.selected.length === 0) {
+            // Require at least one ingredient? Usually up to max. We'll allow empty or prompt.
+            if (!confirm("No has seleccionado ningún ingrediente. ¿Deseas agregar la pizza así?")) {
+                return;
+            }
+        }
+
+        let desc = 'Sin ingredientes adicionales';
+        if (this.state.selected.length > 0) {
+            const names = this.state.selected.map(id => this.ingredients.find(i => i.id === id).name);
+            desc = "Ingredientes elegidos: " + names.join(', ');
+        }
+
+        cartApp.addItem(this.state.currentSizeName, this.state.currentPrice, this.state.currentImg, desc);
+        this.closeModal();
+
+        // Reset
+        this.state.selected = [];
+        this.updateUI();
+    }
+};
+
+function openAmigustoModal() {
+    amigustoApp.openModal();
+}
+function closeAmigustoModal() {
+    amigustoApp.closeModal();
+}
+function addAmigustoToCart() {
+    amigustoApp.addToCart();
+}
+
 // Tailwind configuration and other custom JS
 tailwind.config = {
     theme: {
@@ -465,6 +661,7 @@ const calzoneApp = {
 
 // Initialize apps when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    amigustoApp.init();
     cartApp.init();
     calzoneApp.init();
     vegApp.init();
