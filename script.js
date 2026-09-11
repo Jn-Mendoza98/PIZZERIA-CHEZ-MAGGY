@@ -868,3 +868,32 @@ function addCalzoneToCart(name, price) {
     const img = 'IM/CAL.jpg';
     cartApp.addItem(name, price, img);
 }
+
+// Ravioles Modal Logic
+function openRaviolesModal() {
+    const modal = document.getElementById('ravioles-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
+}
+
+function closeRaviolesModal() {
+    const modal = document.getElementById('ravioles-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+function confirmRavioles() {
+    const selectedSauce = document.querySelector('input[name="ravioles-sauce"]:checked');
+    if (!selectedSauce) return;
+
+    const sauceName = selectedSauce.value;
+    const name = `Ravioles (Salsa ${sauceName})`;
+    const price = 24.00;
+    const img = 'IM/pasta.png'; // Assuming pasta.png as it was used before in menu.html
+    const category = 'Pasta';
+
+    cartApp.addItem(name, price, img, category);
+    closeRaviolesModal();
+}
