@@ -190,7 +190,7 @@ const amigustoApp = {
         });
     },
 
-    addToCart(directType) {
+    addToCart(directType, btn = null) {
         // If triggered directly from "Agregar al carrito" on the card
         if (directType && directType !== this.state.type) {
              this.state.selected = [];
@@ -224,7 +224,7 @@ const amigustoApp = {
             desc = "Ingredientes elegidos: " + names.join(', ');
         }
 
-        cartApp.addItem(this.state.currentSizeName, this.state.currentPrice, this.state.currentImg, desc);
+        cartApp.addItem(this.state.currentSizeName, this.state.currentPrice, this.state.currentImg, desc, btn);
         this.closeModal();
 
         // Reset
@@ -239,8 +239,8 @@ function openAmigustoModal(type) {
 function closeAmigustoModal() {
     amigustoApp.closeModal();
 }
-function addAmigustoToCart(type) {
-    amigustoApp.addToCart(type);
+function addAmigustoToCart(type, btn) {
+    amigustoApp.addToCart(type, btn);
 }
 
 // Tailwind configuration and other custom JS
@@ -374,7 +374,7 @@ const vegApp = {
         });
     },
 
-    addToCart(pizzaIdx = '4') {
+    addToCart(pizzaIdx = '4', btn = null) {
         const sizeBtn = document.querySelector(`button[data-pizza-id="${pizzaIdx}"].selected-size`);
         if (!sizeBtn) {
             alert("Seleccione un tamaño antes de agregar al carrito");
@@ -392,7 +392,7 @@ const vegApp = {
         }
 
         // Use cartApp to add
-        cartApp.addItem(name, price, img, desc);
+        cartApp.addItem(name, price, img, desc, btn);
 
         // Close panel and reset optional
         this.state.isOpen = false;
@@ -550,7 +550,7 @@ const cartApp = {
         }
     },
 
-    addItem(name, price, imageSrc, desc = '') {
+    addItem(name, price, imageSrc, desc = '', btn = null) {
         // Check if item exists (match by both name and exact description)
         const existing = this.state.items.find(i => i.name === name && i.desc === desc);
         if (existing) {
@@ -569,7 +569,31 @@ const cartApp = {
         this.updateBadge();
         this.renderCart();
 
-        // Show subtle feedback (optional, we'll just update the UI)
+        // Show subtle feedback
+        if (btn && btn instanceof HTMLElement) {
+            // Prevent overriding with green state on spam click
+            if (btn.dataset.isAnimating === 'true') {
+                return;
+            }
+
+            btn.dataset.isAnimating = 'true';
+
+            const originalContent = btn.innerHTML;
+            const originalClasses = btn.className;
+
+            // Apply feedback styling
+            btn.innerHTML = `<i class="fas fa-check text-xs mr-2"></i><span class="text-xs sm:text-sm tracking-wide">Agregado</span>`;
+
+            // Remove gradient and original bg classes, add green
+            btn.classList.remove('bg-gradient-to-r', 'from-primary', 'to-red-700', 'bg-red-600', 'hover:bg-red-700', 'hover:from-red-600', 'hover:to-red-800');
+            btn.classList.add('bg-green-600', 'hover:bg-green-700');
+
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.className = originalClasses;
+                btn.dataset.isAnimating = 'false';
+            }, 2000);
+        }
     },
 
     updateBadge() {
@@ -686,13 +710,13 @@ function bindGridAddButtons() {
         // Find all buttons in the grid item that don't have an onclick handler
         const btns = item.querySelectorAll('button:not([onclick])');
         btns.forEach(addBtn => {
-            addBtn.addEventListener('click', () => {
+            addBtn.addEventListener('click', function() {
                 const name = item.querySelector('h4').innerText;
                 const priceStr = item.querySelector('.text-primary.font-bold').innerText;
                 const price = priceStr.replace('S/ ', '').trim();
                 const img = item.querySelector('img').src;
 
-                cartApp.addItem(name, price, img);
+                cartApp.addItem(name, price, img, '', this);
             });
         });
     });
@@ -884,7 +908,7 @@ const bebidasApp = {
         });
     },
 
-    addToCart() {
+    addToCart(btn) {
         if (!this.state.marca || !this.state.tamano || !this.state.temperatura) {
             alert('Por favor selecciona marca, tamaño y temperatura.');
             return;
@@ -894,7 +918,7 @@ const bebidasApp = {
         const img = this.images[this.state.marca] || 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=400&q=80';
         const desc = `Temp: ${this.state.temperatura}`;
 
-        cartApp.addItem(name, price, img, desc, document.getElementById('add-bebida-btn'));
+        cartApp.addItem(name, price, img, desc, btn || document.getElementById('add-bebida-btn'));
     }
 };
 
@@ -937,15 +961,15 @@ function selectPizzaSize(btn, pizzaIdx) {
             const isPersonal = btn.innerText.includes('PERSONAL');
             if (typeof vegApp !== 'undefined') {
                 vegApp.updateLimit(isPersonal ? 4 : 6, btn);
-                addBtn.setAttribute("onclick", `vegApp.addToCart('${pizzaIdx}')`);
+                addBtn.setAttribute("onclick", `vegApp.addToCart('${pizzaIdx}', this)`);
             }
         } else {
-            addBtn.setAttribute("onclick", `addPizzaToCart('${pizzaIdx}')`);
+            addBtn.setAttribute("onclick", `addPizzaToCart('${pizzaIdx}', this)`);
         }
     }
 }
 
-function addPizzaToCart(pizzaIdx) {
+function addPizzaToCart(pizzaIdx, btn) {
     const sizeBtn = document.querySelector(`button[data-pizza-id="${pizzaIdx}"].selected-size`);
     if (!sizeBtn) {
         alert('Seleccione un tamaño antes de agregar al carrito');
@@ -969,7 +993,7 @@ function addPizzaToCart(pizzaIdx) {
         finalName += ` (Aceitunas ${oliveType})`;
     }
 
-    cartApp.addItem(finalName, price, img);
+    cartApp.addItem(finalName, price, img, '', btn);
 }
 
 // --- Pizza Search Logic ---
@@ -1087,7 +1111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Function specifically for adding Calzone Vegetariano with olive validation
-function addCalzoneVegToCart() {
+function addCalzoneVegToCart(btn) {
     const container = document.querySelector('.olive-selector-container[data-pizza-id="calzone-veg"]');
     if (!container) return;
 
@@ -1106,13 +1130,13 @@ function addCalzoneVegToCart() {
     const price = 26.90;
     const img = 'IM/CAL.jpg';
 
-    cartApp.addItem(name, price, img);
+    cartApp.addItem(name, price, img, '', btn);
 }
 
 // Generic function for Calzones without olive selection
-function addCalzoneToCart(name, price) {
+function addCalzoneToCart(name, price, btn) {
     const img = 'IM/CAL.jpg';
-    cartApp.addItem(name, price, img);
+    cartApp.addItem(name, price, img, '', btn);
 }
 
 // Ravioles Modal Logic
@@ -1130,7 +1154,7 @@ function closeRaviolesModal() {
     }
 }
 
-function confirmRavioles() {
+function confirmRavioles(btn) {
     const selectedSauce = document.querySelector('input[name="ravioles-sauce"]:checked');
     if (!selectedSauce) return;
 
@@ -1140,7 +1164,7 @@ function confirmRavioles() {
     const img = 'IM/pasta.png'; // Assuming pasta.png as it was used before in menu.html
     const category = 'Pasta';
 
-    cartApp.addItem(name, price, img, category);
+    cartApp.addItem(name, price, img, category, btn);
     closeRaviolesModal();
 }
 
@@ -1160,7 +1184,7 @@ function closeFetucciniModal() {
     }
 }
 
-function confirmFetuccini() {
+function confirmFetuccini(btn) {
     const selectedSauce = document.querySelector('input[name="fetuccini-sauce"]:checked');
     if (!selectedSauce) return;
 
@@ -1170,7 +1194,7 @@ function confirmFetuccini() {
     const img = 'IM/pasta.png';
     const category = 'Pasta';
 
-    cartApp.addItem(name, price, img, category);
+    cartApp.addItem(name, price, img, category, btn);
     closeFetucciniModal();
 }
 
@@ -1189,7 +1213,7 @@ function closeEspaguetisModal() {
     }
 }
 
-function confirmEspaguetis() {
+function confirmEspaguetis(btn) {
     const selectedSauce = document.querySelector('input[name="espaguetis-sauce"]:checked');
     if (!selectedSauce) return;
 
@@ -1199,6 +1223,6 @@ function confirmEspaguetis() {
     const img = 'IM/pasta.png';
     const category = 'Pasta';
 
-    cartApp.addItem(name, price, img, category);
+    cartApp.addItem(name, price, img, category, btn);
     closeEspaguetisModal();
 }
