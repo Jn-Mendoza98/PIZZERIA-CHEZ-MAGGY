@@ -485,7 +485,7 @@
                             <i class="fas fa-list-ul"></i> Ver Ingredientes
                         </button>
                     </div>
-<button id="add-btn-4" onclick="addAmigustoToCart('pizza')" class="w-full mt-5 bg-gradient-to-r from-primary to-red-700 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center hover:shadow-[0_8px_20px_rgba(230,33,23,0.4)] hover:-translate-y-0.5 transition-all duration-300 group">
+<button id="add-btn-4" onclick="addAmigustoToCart('pizza', this)" class="w-full mt-5 bg-gradient-to-r from-primary to-red-700 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center hover:shadow-[0_8px_20px_rgba(230,33,23,0.4)] hover:-translate-y-0.5 transition-all duration-300 group">
                         <div class="flex items-center gap-2">
                             <div class="bg-white/20 p-1.5 rounded-lg group-hover:scale-110 transition-transform">
                                 <i class="fas fa-shopping-cart text-sm"></i>
@@ -1661,7 +1661,7 @@
     </div>
 
     <div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50">
-        <button onclick="addCalzoneToCart('Calzone Tradicional', 31.00)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+        <button onclick="addCalzoneToCart('Calzone Tradicional', 31.00, this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
         </button>
@@ -1697,7 +1697,7 @@
             <p id="olive-error-calzone-veg" class="text-red-500 text-[9px] sm:text-[10px] font-bold mt-1 hidden">Debes elegir el tipo de aceituna</p>
         </div>
 
-        <button onclick="addCalzoneVegToCart()" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
+        <button onclick="addCalzoneVegToCart(this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
             <i class="fas fa-shopping-cart text-xs mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
         </button>
@@ -1724,7 +1724,7 @@
             <i class="fas fa-list-ul text-gray-400 group-hover:text-primary transition-colors text-xs"></i>
             VER INGREDIENTES
         </button>
-        <button onclick="addAmigustoToCart('calzone')" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300 group">
+        <button onclick="addAmigustoToCart('calzone', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300 group">
             <i class="fas fa-shopping-cart text-xs group-hover:scale-110 transition-transform mr-2"></i>
             <span class="text-xs sm:text-sm tracking-wide">Agregar al carrito</span>
         </button>
@@ -2656,7 +2656,7 @@ function addRefresco(name, id, img, btn) {
         <div class="bg-darker rounded-[24px] p-6 sm:p-8 shadow-xl border border-gray-800 text-center">
             <h4 id="bebidas-title" class="font-bold text-white text-xl mb-2">Selecciona tus opciones</h4>
             <div class="text-3xl font-bold text-primary mb-6" id="bebidas-price">S/ 0.00</div>
-            <button id="add-bebida-btn" onclick="bebidasApp.addToCart()" class="w-full sm:w-auto px-12 bg-gradient-to-r from-primary to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-red-500/40 hover:-translate-y-1 inline-flex items-center justify-center gap-2">
+            <button id="add-bebida-btn" onclick="bebidasApp.addToCart(this)" class="w-full sm:w-auto px-12 bg-gradient-to-r from-primary to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-red-500/40 hover:-translate-y-1 inline-flex items-center justify-center gap-2">
                 <i class="fas fa-shopping-cart"></i>
                 <span>Agregar al carrito</span>
             </button>
@@ -2804,7 +2804,7 @@ function addRefresco(name, id, img, btn) {
 
         <!-- Action Area -->
         <div class="p-5 border-t border-gray-100 bg-white">
-            <button onclick="confirmRavioles()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-red-700 text-white font-bold hover:shadow-[0_8px_20px_rgba(230,33,23,0.4)] hover:-translate-y-0.5 transition-all duration-300 shadow-sm text-sm tracking-wide flex items-center justify-center gap-2">
+            <button onclick="confirmRavioles(this)" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-red-700 text-white font-bold hover:shadow-[0_8px_20px_rgba(230,33,23,0.4)] hover:-translate-y-0.5 transition-all duration-300 shadow-sm text-sm tracking-wide flex items-center justify-center gap-2">
                 <i class="fas fa-shopping-cart text-xs"></i>
                 Agregar - S/ 24.00
             </button>
@@ -2891,7 +2891,7 @@ function addRefresco(name, id, img, btn) {
 
         <!-- Action Area -->
         <div class="p-5 border-t border-gray-100 bg-white">
-            <button onclick="confirmFetuccini()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-red-700 text-white font-bold hover:shadow-[0_8px_20px_rgba(230,33,23,0.4)] hover:-translate-y-0.5 transition-all duration-300 shadow-sm text-sm tracking-wide flex items-center justify-center gap-2">
+            <button onclick="confirmFetuccini(this)" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-red-700 text-white font-bold hover:shadow-[0_8px_20px_rgba(230,33,23,0.4)] hover:-translate-y-0.5 transition-all duration-300 shadow-sm text-sm tracking-wide flex items-center justify-center gap-2">
                 <i class="fas fa-shopping-cart text-xs"></i>
                 Agregar - S/ 23.00
             </button>
@@ -2977,7 +2977,7 @@ function addRefresco(name, id, img, btn) {
 
         <!-- Action Area -->
         <div class="p-5 border-t border-gray-100 bg-white">
-            <button onclick="confirmEspaguetis()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-red-700 text-white font-bold hover:shadow-[0_8px_20px_rgba(230,33,23,0.4)] hover:-translate-y-0.5 transition-all duration-300 shadow-sm text-sm tracking-wide flex items-center justify-center gap-2">
+            <button onclick="confirmEspaguetis(this)" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary to-red-700 text-white font-bold hover:shadow-[0_8px_20px_rgba(230,33,23,0.4)] hover:-translate-y-0.5 transition-all duration-300 shadow-sm text-sm tracking-wide flex items-center justify-center gap-2">
                 <i class="fas fa-shopping-cart text-xs"></i>
                 Agregar - S/ 22.00
             </button>
@@ -3017,7 +3017,7 @@ function addRefresco(name, id, img, btn) {
                 <span class="text-sm font-bold text-gray-700">Ingredientes seleccionados:</span>
                 <span class="text-sm font-bold bg-gray-100 px-3 py-1 rounded-full text-gray-800 border border-gray-200"><span id="amigusto-count-text" class="text-red-600">0</span> / <span id="amigusto-limit-text">4</span></span>
             </div>
-            <button onclick="addAmigustoToCart(amigustoApp.state.type)" class="w-full py-3.5 rounded-xl bg-red-600 text-white font-bold hover:bg-red-700 hover:shadow-[0_8px_20px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300 shadow-sm text-sm tracking-wide flex items-center justify-center gap-2">
+            <button onclick="addAmigustoToCart(amigustoApp.state.type, this)" class="w-full py-3.5 rounded-xl bg-red-600 text-white font-bold hover:bg-red-700 hover:shadow-[0_8px_20px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300 shadow-sm text-sm tracking-wide flex items-center justify-center gap-2">
                 <i class="fas fa-shopping-cart text-xs"></i>
                 Agregar al carrito - <span id="amigusto-price-text">S/ 0.00</span>
             </button>
