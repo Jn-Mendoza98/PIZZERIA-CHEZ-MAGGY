@@ -430,6 +430,28 @@ document.addEventListener('DOMContentLoaded', () => {
             // Un-hide everything just in case
             menuSections.forEach(sec => sec.classList.remove('hidden'));
         }
+
+        // Update active state in mobile menu
+        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+        if (mobileMenuLinks.length > 0) {
+            mobileMenuLinks.forEach(link => {
+                const linkCategory = link.getAttribute('data-category');
+
+                // If it's the "Inicio" link (no data-category)
+                const isInicio = !linkCategory;
+
+                // Determine if this link should be active
+                const isActive = (category === 'all' && isInicio) || (category === linkCategory);
+
+                if (isActive) {
+                    link.classList.remove('text-gray-400');
+                    link.classList.add('text-white');
+                } else {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-400');
+                }
+            });
+        }
     }
 
     // Handle clicks on data-category links
