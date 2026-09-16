@@ -452,6 +452,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+
+        // Scroll to the top of the newly displayed section, accounting for sticky header
+        if (found) {
+            // Delay scroll to allow DOM update
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 10);
+        } else if (category === 'all') {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 10);
+        }
     }
 
     // Handle clicks on data-category links
