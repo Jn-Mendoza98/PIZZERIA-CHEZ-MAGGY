@@ -190,7 +190,7 @@ const amigustoApp = {
         });
     },
 
-    addToCart(directType, btn = null) {
+    addToCart(directType) {
         // If triggered directly from "Agregar al carrito" on the card
         if (directType && directType !== this.state.type) {
              this.state.selected = [];
@@ -224,7 +224,7 @@ const amigustoApp = {
             desc = "Ingredientes elegidos: " + names.join(', ');
         }
 
-        cartApp.addItem(this.state.currentSizeName, this.state.currentPrice, this.state.currentImg, desc, btn);
+        cartApp.addItem(this.state.currentSizeName, this.state.currentPrice, this.state.currentImg, desc);
         this.closeModal();
 
         // Reset
@@ -239,8 +239,8 @@ function openAmigustoModal(type) {
 function closeAmigustoModal() {
     amigustoApp.closeModal();
 }
-function addAmigustoToCart(type, btn) {
-    amigustoApp.addToCart(type, btn);
+function addAmigustoToCart(type) {
+    amigustoApp.addToCart(type);
 }
 
 // Tailwind configuration and other custom JS
@@ -374,7 +374,7 @@ const vegApp = {
         });
     },
 
-    addToCart(pizzaIdx = '4', btn = null) {
+    addToCart(pizzaIdx = '4') {
         const sizeBtn = document.querySelector(`button[data-pizza-id="${pizzaIdx}"].selected-size`);
         if (!sizeBtn) {
             alert("Seleccione un tamaño antes de agregar al carrito");
@@ -392,7 +392,7 @@ const vegApp = {
         }
 
         // Use cartApp to add
-        cartApp.addItem(name, price, img, desc, btn);
+        cartApp.addItem(name, price, img, desc);
 
         // Close panel and reset optional
         this.state.isOpen = false;
@@ -429,68 +429,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!found && category !== 'all') {
             // Un-hide everything just in case
             menuSections.forEach(sec => sec.classList.remove('hidden'));
-        }
-
-        // Update active state in mobile menu
-        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
-        if (mobileMenuLinks.length > 0) {
-            mobileMenuLinks.forEach(link => {
-                const linkCategory = link.getAttribute('data-category');
-
-                // If it's the "Inicio" link (no data-category)
-                const isInicio = !linkCategory;
-
-                // Determine if this link should be active
-                const isActive = (category === 'all' && isInicio) || (category === linkCategory);
-
-                if (isActive) {
-                    link.classList.remove('text-gray-400');
-                    link.classList.add('text-white');
-                } else {
-                    link.classList.remove('text-white');
-                    link.classList.add('text-gray-400');
-                }
-            });
-        }
-
-        // Update active state in desktop menu
-        const desktopMenuLinks = document.querySelectorAll('nav.hidden.lg\\:flex a');
-        if (desktopMenuLinks.length > 0) {
-            desktopMenuLinks.forEach(link => {
-                const linkCategory = link.getAttribute('data-category');
-
-                // If it's the "Inicio" link (no data-category)
-                const isInicio = !linkCategory;
-
-                // Determine if this link should be active
-                const isActive = (category === 'all' && isInicio) || (category === linkCategory);
-
-                if (isActive) {
-                    link.classList.remove('text-gray-300');
-                    link.classList.add('text-white');
-                } else {
-                    link.classList.remove('text-white');
-                    link.classList.add('text-gray-300');
-                }
-            });
-        }
-
-        // Scroll to the top of the newly displayed section, accounting for sticky header
-        if (found) {
-            // Delay scroll to allow DOM update
-            setTimeout(() => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }, 10);
-        } else if (category === 'all') {
-            setTimeout(() => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }, 10);
         }
     }
 
@@ -612,7 +550,7 @@ const cartApp = {
         }
     },
 
-    addItem(name, price, imageSrc, desc = '', btn = null) {
+    addItem(name, price, imageSrc, desc = '') {
         // Check if item exists (match by both name and exact description)
         const existing = this.state.items.find(i => i.name === name && i.desc === desc);
         if (existing) {
@@ -631,31 +569,7 @@ const cartApp = {
         this.updateBadge();
         this.renderCart();
 
-        // Show subtle feedback
-        if (btn && btn instanceof HTMLElement) {
-            // Prevent overriding with green state on spam click
-            if (btn.dataset.isAnimating === 'true') {
-                return;
-            }
-
-            btn.dataset.isAnimating = 'true';
-
-            const originalContent = btn.innerHTML;
-            const originalClasses = btn.className;
-
-            // Apply feedback styling
-            btn.innerHTML = `<i class="fas fa-check text-xs mr-2"></i><span class="text-xs sm:text-sm tracking-wide">Agregado</span>`;
-
-            // Remove gradient and original bg classes, add green
-            btn.classList.remove('bg-gradient-to-r', 'from-primary', 'to-red-700', 'bg-red-600', 'hover:bg-red-700', 'hover:from-red-600', 'hover:to-red-800');
-            btn.classList.add('bg-green-600', 'hover:bg-green-700');
-
-            setTimeout(() => {
-                btn.innerHTML = originalContent;
-                btn.className = originalClasses;
-                btn.dataset.isAnimating = 'false';
-            }, 2000);
-        }
+        // Show subtle feedback (optional, we'll just update the UI)
     },
 
     updateBadge() {
@@ -772,13 +686,13 @@ function bindGridAddButtons() {
         // Find all buttons in the grid item that don't have an onclick handler
         const btns = item.querySelectorAll('button:not([onclick])');
         btns.forEach(addBtn => {
-            addBtn.addEventListener('click', function() {
+            addBtn.addEventListener('click', () => {
                 const name = item.querySelector('h4').innerText;
                 const priceStr = item.querySelector('.text-primary.font-bold').innerText;
                 const price = priceStr.replace('S/ ', '').trim();
                 const img = item.querySelector('img').src;
 
-                cartApp.addItem(name, price, img, '', this);
+                cartApp.addItem(name, price, img);
             });
         });
     });
@@ -970,7 +884,7 @@ const bebidasApp = {
         });
     },
 
-    addToCart(btn) {
+    addToCart() {
         if (!this.state.marca || !this.state.tamano || !this.state.temperatura) {
             alert('Por favor selecciona marca, tamaño y temperatura.');
             return;
@@ -980,7 +894,7 @@ const bebidasApp = {
         const img = this.images[this.state.marca] || 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=400&q=80';
         const desc = `Temp: ${this.state.temperatura}`;
 
-        cartApp.addItem(name, price, img, desc, btn || document.getElementById('add-bebida-btn'));
+        cartApp.addItem(name, price, img, desc, document.getElementById('add-bebida-btn'));
     }
 };
 
@@ -1023,15 +937,15 @@ function selectPizzaSize(btn, pizzaIdx) {
             const isPersonal = btn.innerText.includes('PERSONAL');
             if (typeof vegApp !== 'undefined') {
                 vegApp.updateLimit(isPersonal ? 4 : 6, btn);
-                addBtn.setAttribute("onclick", `vegApp.addToCart('${pizzaIdx}', this)`);
+                addBtn.setAttribute("onclick", `vegApp.addToCart('${pizzaIdx}')`);
             }
         } else {
-            addBtn.setAttribute("onclick", `addPizzaToCart('${pizzaIdx}', this)`);
+            addBtn.setAttribute("onclick", `addPizzaToCart('${pizzaIdx}')`);
         }
     }
 }
 
-function addPizzaToCart(pizzaIdx, btn) {
+function addPizzaToCart(pizzaIdx) {
     const sizeBtn = document.querySelector(`button[data-pizza-id="${pizzaIdx}"].selected-size`);
     if (!sizeBtn) {
         alert('Seleccione un tamaño antes de agregar al carrito');
@@ -1055,7 +969,7 @@ function addPizzaToCart(pizzaIdx, btn) {
         finalName += ` (Aceitunas ${oliveType})`;
     }
 
-    cartApp.addItem(finalName, price, img, '', btn);
+    cartApp.addItem(finalName, price, img);
 }
 
 // --- Pizza Search Logic ---
@@ -1173,7 +1087,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Function specifically for adding Calzone Vegetariano with olive validation
-function addCalzoneVegToCart(btn) {
+function addCalzoneVegToCart() {
     const container = document.querySelector('.olive-selector-container[data-pizza-id="calzone-veg"]');
     if (!container) return;
 
@@ -1192,13 +1106,13 @@ function addCalzoneVegToCart(btn) {
     const price = 26.90;
     const img = 'IM/CAL.jpg';
 
-    cartApp.addItem(name, price, img, '', btn);
+    cartApp.addItem(name, price, img);
 }
 
 // Generic function for Calzones without olive selection
-function addCalzoneToCart(name, price, btn) {
+function addCalzoneToCart(name, price) {
     const img = 'IM/CAL.jpg';
-    cartApp.addItem(name, price, img, '', btn);
+    cartApp.addItem(name, price, img);
 }
 
 // Ravioles Modal Logic
@@ -1216,7 +1130,7 @@ function closeRaviolesModal() {
     }
 }
 
-function confirmRavioles(btn) {
+function confirmRavioles() {
     const selectedSauce = document.querySelector('input[name="ravioles-sauce"]:checked');
     if (!selectedSauce) return;
 
@@ -1226,7 +1140,7 @@ function confirmRavioles(btn) {
     const img = 'IM/pasta.png'; // Assuming pasta.png as it was used before in menu.html
     const category = 'Pasta';
 
-    cartApp.addItem(name, price, img, category, btn);
+    cartApp.addItem(name, price, img, category);
     closeRaviolesModal();
 }
 
@@ -1246,7 +1160,7 @@ function closeFetucciniModal() {
     }
 }
 
-function confirmFetuccini(btn) {
+function confirmFetuccini() {
     const selectedSauce = document.querySelector('input[name="fetuccini-sauce"]:checked');
     if (!selectedSauce) return;
 
@@ -1256,7 +1170,7 @@ function confirmFetuccini(btn) {
     const img = 'IM/pasta.png';
     const category = 'Pasta';
 
-    cartApp.addItem(name, price, img, category, btn);
+    cartApp.addItem(name, price, img, category);
     closeFetucciniModal();
 }
 
@@ -1275,7 +1189,7 @@ function closeEspaguetisModal() {
     }
 }
 
-function confirmEspaguetis(btn) {
+function confirmEspaguetis() {
     const selectedSauce = document.querySelector('input[name="espaguetis-sauce"]:checked');
     if (!selectedSauce) return;
 
@@ -1285,6 +1199,6 @@ function confirmEspaguetis(btn) {
     const img = 'IM/pasta.png';
     const category = 'Pasta';
 
-    cartApp.addItem(name, price, img, category, btn);
+    cartApp.addItem(name, price, img, category);
     closeEspaguetisModal();
 }
