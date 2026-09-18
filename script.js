@@ -453,6 +453,28 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // Update active state in desktop menu
+        const desktopMenuLinks = document.querySelectorAll('nav.hidden.lg\\:flex a');
+        if (desktopMenuLinks.length > 0) {
+            desktopMenuLinks.forEach(link => {
+                const linkCategory = link.getAttribute('data-category');
+
+                // If it's the "Inicio" link (no data-category)
+                const isInicio = !linkCategory;
+
+                // Determine if this link should be active
+                const isActive = (category === 'all' && isInicio) || (category === linkCategory);
+
+                if (isActive) {
+                    link.classList.remove('text-gray-300');
+                    link.classList.add('text-white');
+                } else {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-300');
+                }
+            });
+        }
+
         // Scroll to the top of the newly displayed section, accounting for sticky header
         if (found) {
             // Delay scroll to allow DOM update
