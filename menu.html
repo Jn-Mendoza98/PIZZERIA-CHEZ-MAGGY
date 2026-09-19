@@ -2230,177 +2230,241 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Menu Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+        <!-- Menu Grid: PC (4 cols), Tablet (2 cols), Mobile (1 col) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             <!-- Item 1: Limonada -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
-                <div class="flex flex-row lg:flex-col w-full h-full">
-                    <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
-                        <img alt="Limonada" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/LIMONADA.png" onerror="this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=400&q=80'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
-                    </div>
-                    <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
-                        <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Limonada">Limonada</h4>
-                        <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Nuestra limonada clásica, el balance perfecto de acidez y dulzor.</p>
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-col h-full hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
+                <!-- 1. IMAGEN GRANDE ARRIBA -->
+                <div class="w-full h-48 sm:h-52 overflow-hidden bg-gray-50 relative flex-shrink-0">
+                    <img alt="Limonada" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/LIMONADA.png" onerror="this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=400&q=80'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
 
-                        <div class="grid grid-cols-1 gap-2 mb-3">
-                            <select id="size-refresco-0" onchange="updateRefrescoPrice(0)" class="w-full text-xs p-2 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 outline-none focus:border-red-300">
+                <!-- Contenido debajo -->
+                <div class="p-5 flex flex-col flex-grow bg-white relative z-10">
+                    <!-- 2. Nombre del producto -->
+                    <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-1.5" title="Limonada">Limonada</h4>
+                    <!-- 3. Descripción existente -->
+                    <p class="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed flex-grow">Nuestra limonada clásica, el balance perfecto de acidez y dulzor.</p>
+
+                    <!-- Selectores -->
+                    <div class="space-y-2 mb-4">
+                        <!-- 4. Selector de tamaño existente -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Tamaño</label>
+                            <select id="size-refresco-0" onchange="updateRefrescoPrice(0)" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
                                 <option value="1 Jarra" data-price="18.00">1 Jarra</option>
                                 <option value="1/2 Jarra" data-price="11.00">1/2 jarra</option>
                             </select>
-                            <select id="temp-refresco-0" class="w-full text-xs p-2 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 outline-none focus:border-red-300">
+                        </div>
+                        <!-- 5. Selector de temperatura existente -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Temperatura</label>
+                            <select id="temp-refresco-0" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
                                 <option value="🧊 Helada">🧊 Helada</option>
                                 <option value="🌡 Natural">🌡 Natural</option>
                             </select>
                         </div>
-
-                        <div class="mt-auto flex flex-col">
-                            <span id="price-refresco-0" class="font-bold text-primary text-base lg:text-lg mb-3">S/ 18.00</span>
-                        </div>
                     </div>
-                </div>
 
-                <div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50">
-                    <button onclick="addRefresco('Limonada', 0, 'IM/LIMONADA.png', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
-                        <i class="fas fa-shopping-cart text-xs mr-2"></i>
-                        <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-                    </button>
+                    <!-- Precio y Botón -->
+                    <div class="pt-3 border-t border-gray-100 mt-auto flex flex-col gap-3">
+                        <!-- 6. Precio dinámico existente -->
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Precio</span>
+                            <span id="price-refresco-0" class="font-bold text-primary text-xl">S/ 18.00</span>
+                        </div>
+                        <!-- 7. Botón "Agregar" existente debajo del precio -->
+                        <button onclick="addRefresco('Limonada', 0, 'IM/LIMONADA.png', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:shadow-[0_6px_20px_rgba(230,33,23,0.35)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group/btn">
+                            <i class="fas fa-shopping-cart text-xs transition-transform group-hover/btn:scale-110"></i>
+                            <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <!-- Item 2: Chicha Morada -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
-                <div class="flex flex-row lg:flex-col w-full h-full">
-                    <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
-                        <img alt="Chicha Morada" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/CHICHA_MORADA.png" onerror="this.src='https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=400&q=80'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
-                    </div>
-                    <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
-                        <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Chicha Morada">Chicha Morada</h4>
-                        <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Auténtica chicha morada casera, hervida con manzana y piña.</p>
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-col h-full hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
+                <!-- 1. IMAGEN GRANDE ARRIBA -->
+                <div class="w-full h-48 sm:h-52 overflow-hidden bg-gray-50 relative flex-shrink-0">
+                    <img alt="Chicha Morada" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/CHICHA_MORADA.png" onerror="this.src='https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=400&q=80'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
 
-                        <div class="grid grid-cols-1 gap-2 mb-3">
-                            <select id="size-refresco-1" onchange="updateRefrescoPrice(1)" class="w-full text-xs p-2 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 outline-none focus:border-red-300">
+                <!-- Contenido debajo -->
+                <div class="p-5 flex flex-col flex-grow bg-white relative z-10">
+                    <!-- 2. Nombre del producto -->
+                    <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-1.5" title="Chicha Morada">Chicha Morada</h4>
+                    <!-- 3. Descripción existente -->
+                    <p class="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed flex-grow">Auténtica chicha morada casera, hervida con manzana y piña.</p>
+
+                    <!-- Selectores -->
+                    <div class="space-y-2 mb-4">
+                        <!-- 4. Selector de tamaño existente -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Tamaño</label>
+                            <select id="size-refresco-1" onchange="updateRefrescoPrice(1)" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
                                 <option value="1 Jarra" data-price="19.00">1 Jarra</option>
                                 <option value="1/2 Jarra" data-price="10.00">1/2 jarra</option>
                             </select>
-                            <select id="temp-refresco-1" class="w-full text-xs p-2 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 outline-none focus:border-red-300">
+                        </div>
+                        <!-- 5. Selector de temperatura existente -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Temperatura</label>
+                            <select id="temp-refresco-1" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
                                 <option value="🧊 Helada">🧊 Helada</option>
                                 <option value="🌡 Natural">🌡 Natural</option>
                             </select>
                         </div>
-
-                        <div class="mt-auto flex flex-col">
-                            <span id="price-refresco-1" class="font-bold text-primary text-base lg:text-lg mb-3">S/ 19.00</span>
-                        </div>
                     </div>
-                </div>
 
-                <div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50">
-                    <button onclick="addRefresco('Chicha Morada', 1, 'IM/CHICHA_MORADA.png', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
-                        <i class="fas fa-shopping-cart text-xs mr-2"></i>
-                        <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-                    </button>
+                    <!-- Precio y Botón -->
+                    <div class="pt-3 border-t border-gray-100 mt-auto flex flex-col gap-3">
+                        <!-- 6. Precio dinámico existente -->
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Precio</span>
+                            <span id="price-refresco-1" class="font-bold text-primary text-xl">S/ 19.00</span>
+                        </div>
+                        <!-- 7. Botón "Agregar" existente debajo del precio -->
+                        <button onclick="addRefresco('Chicha Morada', 1, 'IM/CHICHA_MORADA.png', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:shadow-[0_6px_20px_rgba(230,33,23,0.35)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group/btn">
+                            <i class="fas fa-shopping-cart text-xs transition-transform group-hover/btn:scale-110"></i>
+                            <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Item 3: Maracuya -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
-                <div class="flex flex-row lg:flex-col w-full h-full">
-                    <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
-                        <img alt="Maracuyá" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/MARACUYA.png" onerror="this.src='https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=400&q=80'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
-                    </div>
-                    <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
-                        <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Maracuyá">Maracuyá</h4>
-                        <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Refrescante jugo de maracuyá 100% natural y recién preparado.</p>
+            <!-- Item 3: Maracuyá -->
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-col h-full hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
+                <!-- 1. IMAGEN GRANDE ARRIBA -->
+                <div class="w-full h-48 sm:h-52 overflow-hidden bg-gray-50 relative flex-shrink-0">
+                    <img alt="Maracuyá" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/MARACUYA.png" onerror="this.src='https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=400&q=80'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
 
-                        <div class="grid grid-cols-1 gap-2 mb-3">
-                            <select id="size-refresco-2" onchange="updateRefrescoPrice(2)" class="w-full text-xs p-2 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 outline-none focus:border-red-300">
+                <!-- Contenido debajo -->
+                <div class="p-5 flex flex-col flex-grow bg-white relative z-10">
+                    <!-- 2. Nombre del producto -->
+                    <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-1.5" title="Maracuyá">Maracuyá</h4>
+                    <!-- 3. Descripción existente -->
+                    <p class="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed flex-grow">Refrescante jugo de maracuyá 100% natural y recién preparado.</p>
+
+                    <!-- Selectores -->
+                    <div class="space-y-2 mb-4">
+                        <!-- 4. Selector de tamaño existente -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Tamaño</label>
+                            <select id="size-refresco-2" onchange="updateRefrescoPrice(2)" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
                                 <option value="1 Jarra" data-price="19.00">1 Jarra</option>
                                 <option value="1/2 Jarra" data-price="9.00">1/2 jarra</option>
                             </select>
-                            <select id="temp-refresco-2" class="w-full text-xs p-2 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 outline-none focus:border-red-300">
+                        </div>
+                        <!-- 5. Selector de temperatura existente -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Temperatura</label>
+                            <select id="temp-refresco-2" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
                                 <option value="🧊 Helada">🧊 Helada</option>
                                 <option value="🌡 Natural">🌡 Natural</option>
                             </select>
                         </div>
-
-                        <div class="mt-auto flex flex-col">
-                            <span id="price-refresco-2" class="font-bold text-primary text-base lg:text-lg mb-3">S/ 19.00</span>
-                        </div>
                     </div>
-                </div>
 
-                <div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50">
-                    <button onclick="addRefresco('Maracuyá', 2, 'IM/MARACUYA.png', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
-                        <i class="fas fa-shopping-cart text-xs mr-2"></i>
-                        <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-                    </button>
+                    <!-- Precio y Botón -->
+                    <div class="pt-3 border-t border-gray-100 mt-auto flex flex-col gap-3">
+                        <!-- 6. Precio dinámico existente -->
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Precio</span>
+                            <span id="price-refresco-2" class="font-bold text-primary text-xl">S/ 19.00</span>
+                        </div>
+                        <!-- 7. Botón "Agregar" existente debajo del precio -->
+                        <button onclick="addRefresco('Maracuyá', 2, 'IM/MARACUYA.png', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:shadow-[0_6px_20px_rgba(230,33,23,0.35)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group/btn">
+                            <i class="fas fa-shopping-cart text-xs transition-transform group-hover/btn:scale-110"></i>
+                            <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <!-- Item 4: Naranja -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col">
-                <div class="flex flex-row lg:flex-col w-full h-full">
-                    <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-50 flex-shrink-0 relative">
-                        <img alt="Naranja" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/NARANJA.png" onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=400&q=80'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
-                    </div>
-                    <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
-                        <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Naranja">Naranja</h4>
-                        <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Jugo de naranjas frescas cuidadosamente seleccionadas.</p>
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-col h-full hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative">
+                <!-- 1. IMAGEN GRANDE ARRIBA -->
+                <div class="w-full h-48 sm:h-52 overflow-hidden bg-gray-50 relative flex-shrink-0">
+                    <img alt="Naranja" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/NARANJA.png" onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=400&q=80'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
 
-                        <div class="grid grid-cols-1 gap-2 mb-3">
-                            <select id="size-refresco-3" onchange="updateRefrescoPrice(3)" class="w-full text-xs p-2 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 outline-none focus:border-red-300">
+                <!-- Contenido debajo -->
+                <div class="p-5 flex flex-col flex-grow bg-white relative z-10">
+                    <!-- 2. Nombre del producto -->
+                    <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-1.5" title="Naranja">Naranja</h4>
+                    <!-- 3. Descripción existente -->
+                    <p class="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed flex-grow">Jugo de naranjas frescas cuidadosamente seleccionadas.</p>
+
+                    <!-- Selectores -->
+                    <div class="space-y-2 mb-4">
+                        <!-- 4. Selector de tamaño existente -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Tamaño</label>
+                            <select id="size-refresco-3" onchange="updateRefrescoPrice(3)" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
                                 <option value="1 Jarra" data-price="17.00">1 Jarra</option>
                                 <option value="1/2 Jarra" data-price="9.00">1/2 jarra</option>
                             </select>
-                            <select id="temp-refresco-3" class="w-full text-xs p-2 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 outline-none focus:border-red-300">
+                        </div>
+                        <!-- 5. Selector de temperatura existente -->
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Temperatura</label>
+                            <select id="temp-refresco-3" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
                                 <option value="🧊 Helada">🧊 Helada</option>
                                 <option value="🌡 Natural">🌡 Natural</option>
                             </select>
                         </div>
-
-                        <div class="mt-auto flex flex-col">
-                            <span id="price-refresco-3" class="font-bold text-primary text-base lg:text-lg mb-3">S/ 17.00</span>
-                        </div>
                     </div>
-                </div>
 
-                <div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50">
-                    <button onclick="addRefresco('Naranja', 3, 'IM/NARANJA.png', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-2 px-4 rounded-lg font-bold flex items-center justify-center hover:shadow-[0_4px_12px_rgba(230,33,23,0.3)] hover:-translate-y-0.5 transition-all duration-300">
-                        <i class="fas fa-shopping-cart text-xs mr-2"></i>
-                        <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
-                    </button>
+                    <!-- Precio y Botón -->
+                    <div class="pt-3 border-t border-gray-100 mt-auto flex flex-col gap-3">
+                        <!-- 6. Precio dinámico existente -->
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Precio</span>
+                            <span id="price-refresco-3" class="font-bold text-primary text-xl">S/ 17.00</span>
+                        </div>
+                        <!-- 7. Botón "Agregar" existente debajo del precio -->
+                        <button onclick="addRefresco('Naranja', 3, 'IM/NARANJA.png', this)" class="w-full bg-gradient-to-r from-primary to-red-700 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:shadow-[0_6px_20px_rgba(230,33,23,0.35)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group/btn">
+                            <i class="fas fa-shopping-cart text-xs transition-transform group-hover/btn:scale-110"></i>
+                            <span class="text-xs sm:text-sm tracking-wide">Agregar</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <!-- Item 5: Limonada Frozen -->
-            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex h-auto hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative flex-col bg-gray-50/50">
-                <div class="flex flex-row lg:flex-col w-full h-full">
-                    <div class="w-2/5 lg:w-full h-36 lg:h-48 overflow-hidden bg-gray-100 flex-shrink-0 relative">
-                        <img alt="Limonada Frozen" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/LIMONADA_FROZEN.png" onerror="this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=400&q=80'">
-                        <div class="absolute inset-0 bg-black/10"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block"></div>
-                    </div>
-                    <div class="p-4 lg:p-6 flex flex-col justify-center flex-grow bg-white lg:-mt-2 lg:rounded-t-[20px] relative z-10">
-                        <h4 class="font-bold text-gray-900 text-base lg:text-xl mb-1 lg:mb-2 line-clamp-2" title="Limonada Frozen">Limonada Frozen</h4>
-                        <p class="hidden lg:block text-gray-500 text-xs mb-4 line-clamp-2 leading-relaxed">Nuestra exquisita limonada frozen con el toque especial de la casa.</p>
-
-                        <div class="mt-auto bg-amber-50 border border-amber-200 p-2 rounded-lg mb-2">
-                            <p class="text-[10px] sm:text-xs text-amber-800 font-medium leading-tight flex items-start gap-1.5">
-                                <span class="text-xs">⚠️</span>
-                                <span>Disponible únicamente para consumo en nuestro local</span>
-                            </p>
-                        </div>
-                    </div>
+            <div class="bg-white rounded-[20px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden flex flex-col h-full hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group relative bg-gray-50/50">
+                <!-- 1. IMAGEN GRANDE ARRIBA -->
+                <div class="w-full h-48 sm:h-52 overflow-hidden bg-gray-100 relative flex-shrink-0">
+                    <img alt="Limonada Frozen" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="IM/LIMONADA_FROZEN.png" onerror="this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=400&q=80'">
+                    <div class="absolute inset-0 bg-black/10"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
 
-                <div class="px-4 pb-4 pt-2 mt-auto w-full border-t border-gray-50">
-                    <button class="w-full bg-gray-100 text-gray-700 py-2 px-2 rounded-lg font-bold flex items-center justify-center border border-gray-200 hover:bg-gray-200 transition-colors shadow-sm">
-                        <span class="text-[10px] sm:text-xs tracking-wide">Ver disponibilidad en local</span>
-                    </button>
+                <!-- Contenido debajo -->
+                <div class="p-5 flex flex-col flex-grow bg-white relative z-10">
+                    <!-- 2. Nombre del producto -->
+                    <h4 class="font-bold text-gray-900 text-lg sm:text-xl mb-1.5" title="Limonada Frozen">Limonada Frozen</h4>
+                    <!-- 3. Descripción existente -->
+                    <p class="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed flex-grow">Nuestra exquisita limonada frozen con el toque especial de la casa.</p>
+
+                    <!-- Aviso de atención en local -->
+                    <div class="mt-auto bg-amber-50 border border-amber-200 p-3 rounded-xl mb-3">
+                        <p class="text-xs text-amber-800 font-medium leading-tight flex items-start gap-1.5">
+                            <span class="text-xs">⚠️</span>
+                            <span>Disponible únicamente para consumo en nuestro local</span>
+                        </p>
+                    </div>
+
+                    <div class="pt-3 border-t border-gray-100 mt-auto">
+                        <button class="w-full bg-gray-100 text-gray-700 py-3 px-4 rounded-xl font-bold flex items-center justify-center border border-gray-200 hover:bg-gray-200 transition-colors shadow-sm">
+                            <span class="text-xs sm:text-sm tracking-wide">Ver disponibilidad en local</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
