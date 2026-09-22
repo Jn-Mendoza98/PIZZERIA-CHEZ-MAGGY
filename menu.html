@@ -66,7 +66,7 @@
         </button>
     </div>
     <div class="flex-1 flex flex-col items-start justify-start space-y-6 overflow-y-auto py-8 px-8">
-        <a href="index.html" data-category="inicio" class="flex items-center gap-3 text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition"><i class="fas fa-home w-6 text-center"></i> Inicio</a>
+        <a href="index.html" class="flex items-center gap-3 text-xl font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition"><i class="fas fa-home w-6 text-center"></i> Inicio</a>
         <a href="#entradas" data-category="entradas" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🍃</span> Entradas</a>
         <a href="#cremas" data-category="cremas" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🥣</span> Cremas</a>
         <a href="#calzone" data-category="calzone" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><i class="fas fa-pizza-slice w-6 text-center"></i> Calzone</a>
@@ -3226,7 +3226,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateMobileMenuActiveState();
     window.addEventListener('hashchange', updateMobileMenuActiveState);
 
-    var mobileLinks = document.querySelectorAll('#mobile-menu a');
+    var mobileLinks = document.querySelectorAll('#mobile-menu a[data-category]');
     mobileLinks.forEach(function(link) {
         link.addEventListener('click', function() {
             setTimeout(updateMobileMenuActiveState, 50);
