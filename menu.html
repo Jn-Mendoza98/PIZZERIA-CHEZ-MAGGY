@@ -2248,7 +2248,7 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                     <p class="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed flex-grow">Nuestra limonada clásica, el balance perfecto de acidez y dulzor.</p>
 
                     <!-- Selectores -->
-                    <div class="space-y-2 mb-4">
+                    <div class="space-y-3 mb-4">
                         <!-- 4. Selector de tamaño existente -->
                         <div>
                             <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Tamaño</label>
@@ -2257,13 +2257,18 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                                 <option value="1/2 Jarra" data-price="11.00">1/2 jarra</option>
                             </select>
                         </div>
-                        <!-- 5. Selector de temperatura existente -->
+                        <!-- 5. Selector de temperatura (Botones horizontales) -->
                         <div>
                             <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Temperatura</label>
-                            <select id="temp-refresco-0" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
-                                <option value="🧊 Helada">🧊 Helada</option>
-                                <option value="🌡 Natural">🌡 Natural</option>
-                            </select>
+                            <input type="hidden" id="temp-refresco-0" value="❄️ Helada">
+                            <div class="flex gap-2">
+                                <button type="button" onclick="selectRefrescoTemp(0, '❄️ Helada', this)" class="temp-btn-0 flex-1 py-2 px-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-red-600 text-white border-red-600">
+                                    ❄️ Helada
+                                </button>
+                                <button type="button" onclick="selectRefrescoTemp(0, '🌡️ Sin helar', this)" class="temp-btn-0 flex-1 py-2 px-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:bg-gray-50">
+                                    🌡️ Sin helar
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -2299,7 +2304,7 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                     <p class="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed flex-grow">Auténtica chicha morada casera, hervida con manzana y piña.</p>
 
                     <!-- Selectores -->
-                    <div class="space-y-2 mb-4">
+                    <div class="space-y-3 mb-4">
                         <!-- 4. Selector de tamaño existente -->
                         <div>
                             <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Tamaño</label>
@@ -2308,13 +2313,18 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                                 <option value="1/2 Jarra" data-price="10.00">1/2 jarra</option>
                             </select>
                         </div>
-                        <!-- 5. Selector de temperatura existente -->
+                        <!-- 5. Selector de temperatura (Botones horizontales) -->
                         <div>
                             <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Temperatura</label>
-                            <select id="temp-refresco-1" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
-                                <option value="🧊 Helada">🧊 Helada</option>
-                                <option value="🌡 Natural">🌡 Natural</option>
-                            </select>
+                            <input type="hidden" id="temp-refresco-1" value="❄️ Helada">
+                            <div class="flex gap-2">
+                                <button type="button" onclick="selectRefrescoTemp(1, '❄️ Helada', this)" class="temp-btn-1 flex-1 py-2 px-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-red-600 text-white border-red-600">
+                                    ❄️ Helada
+                                </button>
+                                <button type="button" onclick="selectRefrescoTemp(1, '🌡️ Sin helar', this)" class="temp-btn-1 flex-1 py-2 px-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:bg-gray-50">
+                                    🌡️ Sin helar
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -2350,7 +2360,7 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                     <p class="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed flex-grow">Refrescante jugo de maracuyá 100% natural y recién preparado.</p>
 
                     <!-- Selectores -->
-                    <div class="space-y-2 mb-4">
+                    <div class="space-y-3 mb-4">
                         <!-- 4. Selector de tamaño existente -->
                         <div>
                             <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Tamaño</label>
@@ -2359,13 +2369,18 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                                 <option value="1/2 Jarra" data-price="9.00">1/2 jarra</option>
                             </select>
                         </div>
-                        <!-- 5. Selector de temperatura existente -->
+                        <!-- 5. Selector de temperatura (Botones horizontales) -->
                         <div>
                             <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Temperatura</label>
-                            <select id="temp-refresco-2" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
-                                <option value="🧊 Helada">🧊 Helada</option>
-                                <option value="🌡 Natural">🌡 Natural</option>
-                            </select>
+                            <input type="hidden" id="temp-refresco-2" value="❄️ Helada">
+                            <div class="flex gap-2">
+                                <button type="button" onclick="selectRefrescoTemp(2, '❄️ Helada', this)" class="temp-btn-2 flex-1 py-2 px-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-red-600 text-white border-red-600">
+                                    ❄️ Helada
+                                </button>
+                                <button type="button" onclick="selectRefrescoTemp(2, '🌡️ Sin helar', this)" class="temp-btn-2 flex-1 py-2 px-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:bg-gray-50">
+                                    🌡️ Sin helar
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -2401,7 +2416,7 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                     <p class="text-gray-500 text-xs sm:text-sm mb-4 leading-relaxed flex-grow">Jugo de naranjas frescas cuidadosamente seleccionadas.</p>
 
                     <!-- Selectores -->
-                    <div class="space-y-2 mb-4">
+                    <div class="space-y-3 mb-4">
                         <!-- 4. Selector de tamaño existente -->
                         <div>
                             <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Tamaño</label>
@@ -2410,13 +2425,18 @@ function addPastaWithSauce(baseName, price, selectId, btn) {
                                 <option value="1/2 Jarra" data-price="9.00">1/2 jarra</option>
                             </select>
                         </div>
-                        <!-- 5. Selector de temperatura existente -->
+                        <!-- 5. Selector de temperatura (Botones horizontales) -->
                         <div>
                             <label class="block text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Temperatura</label>
-                            <select id="temp-refresco-3" class="w-full text-xs font-medium p-2.5 border border-gray-200 rounded-xl bg-gray-50 text-gray-700 outline-none focus:border-red-400 focus:ring-1 focus:ring-red-400 transition-colors">
-                                <option value="🧊 Helada">🧊 Helada</option>
-                                <option value="🌡 Natural">🌡 Natural</option>
-                            </select>
+                            <input type="hidden" id="temp-refresco-3" value="❄️ Helada">
+                            <div class="flex gap-2">
+                                <button type="button" onclick="selectRefrescoTemp(3, '❄️ Helada', this)" class="temp-btn-3 flex-1 py-2 px-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-red-600 text-white border-red-600">
+                                    ❄️ Helada
+                                </button>
+                                <button type="button" onclick="selectRefrescoTemp(3, '🌡️ Sin helar', this)" class="temp-btn-3 flex-1 py-2 px-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:bg-gray-50">
+                                    🌡️ Sin helar
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -2480,16 +2500,47 @@ function updateRefrescoPrice(id) {
     document.getElementById('price-refresco-' + id).innerText = 'S/ ' + price;
 }
 
+function selectRefrescoTemp(id, value, btn) {
+    var tempInput = document.getElementById('temp-refresco-' + id);
+    if (tempInput) {
+        tempInput.value = value;
+    }
+    var container = btn.parentElement;
+    if (container) {
+        var buttons = container.querySelectorAll('.temp-btn-' + id);
+        buttons.forEach(function(b) {
+            b.className = 'temp-btn-' + id + ' flex-1 py-2 px-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-white text-gray-700 border-gray-200 hover:bg-gray-50';
+        });
+    }
+    btn.className = 'temp-btn-' + id + ' flex-1 py-2 px-2 text-xs font-bold rounded-xl border transition-all duration-200 bg-red-600 text-white border-red-600';
+}
+
 function addRefresco(name, id, img, btn) {
     var sizeSelect = document.getElementById('size-refresco-' + id);
-    var tempSelect = document.getElementById('temp-refresco-' + id);
+    var tempInput = document.getElementById('temp-refresco-' + id);
 
     var size = sizeSelect.value;
     var price = parseFloat(sizeSelect.options[sizeSelect.selectedIndex].getAttribute('data-price'));
-    var temp = tempSelect.value;
+    var temp = tempInput ? tempInput.value : '❄️ Helada';
 
     var finalName = name + ' (' + size + ' - ' + temp + ')';
     cartApp.addItem(finalName, price, img, 'Refresco', btn);
+
+    if (btn) {
+        if (btn.dataset.isAnimating === 'true') return;
+        btn.dataset.isAnimating = 'true';
+        var originalHTML = btn.innerHTML;
+        var originalClasses = btn.className;
+
+        btn.innerHTML = '<span>✓ Agregado al carrito</span>';
+        btn.className = 'w-full bg-green-600 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all duration-300';
+
+        setTimeout(function() {
+            btn.innerHTML = originalHTML;
+            btn.className = originalClasses;
+            delete btn.dataset.isAnimating;
+        }, 1500);
+    }
 }
 </script>
 
