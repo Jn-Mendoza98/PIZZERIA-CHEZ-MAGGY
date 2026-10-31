@@ -39,21 +39,23 @@
                 </div>
 
                 <!-- Desktop Menu -->
-                <nav class="hidden lg:flex space-x-4 xl:space-x-6 text-xs xl:text-sm font-medium items-center uppercase tracking-wide">
-                    <a href="index.html" class="text-white hover:text-primary transition">Inicio</a>
-                    <a href="menu.html#entradas" data-category="entradas" class="text-gray-300 hover:text-primary transition">Entradas</a>
-                    <a href="menu.html#cremas" data-category="cremas" class="text-gray-300 hover:text-primary transition">Cremas</a>
-                    <a href="menu.html#calzone" data-category="calzone" class="text-gray-300 hover:text-primary transition">Calzone</a>
-                    <a href="menu.html#pizzas" data-category="pizzas" class="text-gray-300 hover:text-primary transition">Pizzas</a>
-                    <a href="menu.html#pastas" data-category="pastas" class="text-gray-300 hover:text-primary transition">Pastas</a>
-                    <a href="menu.html#refrescos" data-category="refrescos" class="text-gray-300 hover:text-primary transition">Refrescos</a>
-                    <a href="menu.html#postres" data-category="postres" class="text-gray-300 hover:text-primary transition">Postres</a>
-                    <a href="menu.html#bebidas" data-category="bebidas" class="text-gray-300 hover:text-primary transition">Bebidas</a>
+                <nav class="hidden lg:flex flex-1 min-w-0 overflow-x-auto header-nav-scroll space-x-4 xl:space-x-6 text-xs xl:text-sm font-medium items-center uppercase tracking-wide mx-4 xl:mx-8">
+                    <a href="index.html" class="flex-shrink-0 whitespace-nowrap text-white hover:text-primary transition">Inicio</a>
+                    <a href="menu.html#entradas" data-category="entradas" class="flex-shrink-0 whitespace-nowrap text-gray-300 hover:text-primary transition">Entradas</a>
+                    <a href="menu.html#cremas" data-category="cremas" class="flex-shrink-0 whitespace-nowrap text-gray-300 hover:text-primary transition">Cremas</a>
+                    <a href="menu.html#calzone" data-category="calzone" class="flex-shrink-0 whitespace-nowrap text-gray-300 hover:text-primary transition">Calzone</a>
+                    <a href="menu.html#pizzas" data-category="pizzas" class="flex-shrink-0 whitespace-nowrap text-gray-300 hover:text-primary transition">Pizzas</a>
+                    <a href="menu.html#pastas" data-category="pastas" class="flex-shrink-0 whitespace-nowrap text-gray-300 hover:text-primary transition">Pastas</a>
+                    <a href="menu.html#refrescos" data-category="refrescos" class="flex-shrink-0 whitespace-nowrap text-gray-300 hover:text-primary transition">Refrescos</a>
+                    <a href="menu.html#postres" data-category="postres" class="flex-shrink-0 whitespace-nowrap text-gray-300 hover:text-primary transition">Postres</a>
+                    <a href="menu.html#bebidas" data-category="bebidas" class="flex-shrink-0 whitespace-nowrap text-gray-300 hover:text-primary transition">Bebidas</a>
+                    <a href="menu.html#nosotros" data-category="nosotros" class="flex-shrink-0 whitespace-nowrap text-gray-300 hover:text-primary transition">Nosotros</a>
+                    <a href="#location" class="flex-shrink-0 whitespace-nowrap text-gray-300 hover:text-primary transition">Contáctanos</a>
                 </nav>
 
                 <!-- Actions (Button + Cart) -->
-                <div class="flex items-center gap-4">
-                    <a href="menu.html" class="hidden lg:inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-bold text-white bg-primary hover:bg-red-700 transition uppercase">
+                <div class="flex-shrink-0 flex items-center gap-4">
+                    <a href="menu.html" class="hidden lg:inline-flex flex-shrink-0 whitespace-nowrap items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-bold text-white bg-primary hover:bg-red-700 transition uppercase">
                         Pedir Ahora
                     </a>
                     <button id="cart-toggle-btn" class="relative text-white hover:text-primary transition" onclick="cartApp.toggleModal()">
@@ -63,6 +65,40 @@
                 </div>
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const nav = document.querySelector('header .header-nav-scroll');
+                if (!nav) return;
+                nav.addEventListener('wheel', (e) => {
+                    if (e.deltaY !== 0) {
+                        e.preventDefault();
+                        nav.scrollLeft += e.deltaY;
+                    }
+                }, { passive: false });
+                let isDown = false, startX, scrollLeft, isDragging = false;
+                nav.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    isDragging = false;
+                    startX = e.pageX - nav.offsetLeft;
+                    scrollLeft = nav.scrollLeft;
+                });
+                nav.addEventListener('mouseleave', () => { isDown = false; });
+                nav.addEventListener('mouseup', () => { isDown = false; });
+                nav.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    isDragging = true;
+                    const x = e.pageX - nav.offsetLeft;
+                    const walk = (x - startX) * 1.5;
+                    nav.scrollLeft = scrollLeft - walk;
+                });
+                nav.querySelectorAll('a').forEach(a => {
+                    a.addEventListener('click', (e) => {
+                        if (isDragging) e.preventDefault();
+                    });
+                });
+            });
+        </script>
 
         <!-- Mobile Menu -->
         <div id="mobile-menu-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-50 hidden transition-opacity"></div>
@@ -85,6 +121,8 @@
                 <a href="menu.html#refrescos" data-category="refrescos" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🥤</span> Refrescos</a>
                 <a href="menu.html#postres" data-category="postres" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🧁</span> Postres</a>
                 <a href="menu.html#bebidas" data-category="bebidas" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🥤</span> Bebidas</a>
+                <a href="menu.html#nosotros" data-category="nosotros" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition category-link"><span class="w-6 text-center">🏛️</span> Nosotros</a>
+                <a href="#location" class="flex items-center gap-3 text-lg font-bold uppercase tracking-wider text-gray-400 hover:text-primary transition"><i class="fas fa-envelope w-6 text-center"></i> Contáctanos</a>
             </div>
         </div>
     </header>
@@ -417,7 +455,7 @@
     </section>
 
     <!-- Location Section -->
-    <section class="bg-darker text-white py-0 md:py-16">
+    <section id="location" class="bg-darker text-white py-0 md:py-16">
         <!-- On mobile, the map is above the info. On desktop, they are side-by-side. -->
         <div class="flex flex-col md:flex-row max-w-7xl mx-auto md:px-6 lg:px-8">
 
@@ -558,12 +596,12 @@
                 <div class="flex flex-col items-center md:items-start">
                     <h4 class="text-lg font-bold uppercase mb-4 tracking-wider">Enlaces Rápidos</h4>
                     <ul class="space-y-2 text-sm text-gray-400 w-full text-center md:text-left">
-                        <li><a href="#" class="hover:text-primary transition flex items-center justify-between md:justify-start">Inicio <i class="fas fa-chevron-right text-xs md:hidden"></i></a></li>
-                        <li><a href="#" class="hover:text-primary transition flex items-center justify-between md:justify-start">Menú <i class="fas fa-chevron-right text-xs md:hidden"></i></a></li>
+                        <li><a href="index.html" class="hover:text-primary transition flex items-center justify-between md:justify-start">Inicio <i class="fas fa-chevron-right text-xs md:hidden"></i></a></li>
+                        <li><a href="menu.html" class="hover:text-primary transition flex items-center justify-between md:justify-start">Menú <i class="fas fa-chevron-right text-xs md:hidden"></i></a></li>
                        <!-- <li><a href="#" class="hover:text-primary transition flex items-center justify-between md:justify-start">Promociones <i class="fas fa-chevron-right text-xs md:hidden"></i></a></li>
                         <li><a href="#" class="hover:text-primary transition flex items-center justify-between md:justify-start">Combos <i class="fas fa-chevron-right text-xs md:hidden"></i></a></li> -->
-                        <li><a href="#" class="hover:text-primary transition flex items-center justify-between md:justify-start">Nosotros <i class="fas fa-chevron-right text-xs md:hidden"></i></a></li>
-                        <li><a href="#" class="hover:text-primary transition flex items-center justify-between md:justify-start">Contáctanos <i class="fas fa-chevron-right text-xs md:hidden"></i></a></li>
+                        <li><a href="menu.html#nosotros" class="hover:text-primary transition flex items-center justify-between md:justify-start">Nosotros <i class="fas fa-chevron-right text-xs md:hidden"></i></a></li>
+                        <li><a href="menu.html#contactanos" class="hover:text-primary transition flex items-center justify-between md:justify-start">Contáctanos <i class="fas fa-chevron-right text-xs md:hidden"></i></a></li>
                     </ul>
                 </div>
 
@@ -637,16 +675,14 @@
 
             <!-- Total Area -->
                 <div class="p-5 border-t border-gray-200 bg-white">
-                    <div class="flex items-center justify-between font-bold text-gray-800 text-lg mb-6">
-                        <span class="text-gray-900 font-extrabold uppercase tracking-wide">TOTAL GENERAL</span>
-                        <span id="cart-total-price" class="text-red-600 font-extrabold text-2xl">S/ 0.00</span>
+            <div class="flex items-center justify-between font-bold text-gray-800 mb-6">
+                <span class="text-gray-900 font-extrabold uppercase tracking-wide text-sm sm:text-lg">TOTAL GENERAL</span>
+                <span id="cart-total-price" class="text-red-600 font-extrabold text-xl sm:text-2xl">S/ 0.00</span>
                 </div>
-                    <div class="flex gap-3">
-                        <button onclick="cartApp.toggleModal()" class="flex-1 py-3.5 rounded-xl border-2 border-gray-200 text-gray-700 font-bold hover:bg-gray-50 transition bg-white shadow-sm text-sm tracking-wide">
-                        Cerrar
-                    </button>
-                        <button onclick="cartApp.checkout()" class="flex-1 py-3.5 rounded-xl bg-red-600 text-white font-bold hover:bg-red-700 transition shadow-sm text-sm tracking-wide">
-                        Finalizar Pedido
+            <div>
+                <button onclick="cartApp.checkout()" class="w-full py-3.5 px-4 rounded-xl bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold transition-all duration-300 shadow-md hover:shadow-green-600/30 text-base sm:text-lg tracking-wide flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    <span>Enviar pedido</span>
                     </button>
                 </div>
             </div>
